@@ -20,6 +20,10 @@ Tree.findOne = function(o) {
   return tree;
 }
 
+Tree.prototype.kids = function() {
+  return _.map(this.children, function(o) {return new Tree(Trees.findOne(o))});
+}
+
 Tree.prototype.create_child = function(o) {
   o['parent'] = this._id;
   child = Tree.create(o);
