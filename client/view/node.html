@@ -1,0 +1,10 @@
+<template name="node">
+  <p>{{title}} : {{total_count}}</p>
+  <ul>
+  {{#each kids}}
+    <li>
+      {{> node}}
+    </li>
+  {{/each}}
+  </ul>
+</template>
