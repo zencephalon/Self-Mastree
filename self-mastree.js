@@ -1,32 +1,12 @@
-var countDep = new Deps.Dependency;
-
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault("counter", 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
-    }
-  });
-
-  Template.hello.root = function() {
-    console.log(Tree.findOne({root: true}));
+  Template.root.root = function() {
     return Tree.findOne({root: true});
   }
 
-  Template.hello.events({
+  Template.root.events({
     'click': function () {
-      countDep.changed();
-      console.log(this);
       this.incCount(true);
-      console.log(this.count);
     }
-  });
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
   });
 }
