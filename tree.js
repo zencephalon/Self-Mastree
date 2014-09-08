@@ -11,6 +11,7 @@ Tree.create = function(o) {
     o['children'] = [];
   }
   o['count'] = 0;
+  o['total_count'] = 0;
 
   id = Trees.insert(o);
 
@@ -23,8 +24,18 @@ Tree.findOne = function(o) {
   return tree;
 }
 
-Tree.prototype.incCount = function() {
-  this.update({"$inc": {"count": 1}})
+Tree.prototype.getParent = function() {
+  return Tree.findOne(this.parent);
+}
+
+Tree.prototype.incCount = function(own) {
+  if (own === true) {
+    this.update({"$inc": {"count": 1}});
+  }
+  this.update({"$inc": {"total_count": 1}});
+  if (this.parent !== undefined)  {
+    this.getParent().incCount(false);
+  }
 }
 
 Tree.prototype.kids = function() {

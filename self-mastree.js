@@ -28,7 +28,7 @@ if (Meteor.isClient) {
     'click': function () {
       countDep.changed();
       console.log(this);
-      this.incCount();
+      this.incCount(true);
       console.log(this.count);
     }
   });
