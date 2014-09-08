@@ -7,11 +7,14 @@ Tree = function(o) {
 }
 
 Tree.create = function(o) {
-  id = Trees.insert(o);
-  o['_id'] = id;
   if (o['children'] === undefined) {
     o['children'] = [];
   }
+  o['count'] = 0;
+
+  id = Trees.insert(o);
+
+  o['_id'] = id;
   return new Tree(o);
 }
 
