@@ -15,15 +15,6 @@ if (Meteor.isClient) {
     return Tree.findOne({root: true});
   }
 
-  Template.node.score = function() {
-    countDep.depend();
-    if (this.children === []) {
-      return this.count;
-    } else {
-      return _.reduce(this.kids, function(memo, child) { return memo + child.score()}, 0);
-    }
-  }
-
   Template.hello.events({
     'click': function () {
       countDep.changed();
