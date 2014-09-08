@@ -25,7 +25,13 @@ Tree.prototype.create_child = function(o) {
 
 Tree.prototype.update = function(update) {
   if (update === undefined) {
-    Trees.update(this._id, {"$set": this});
+    o = {};
+    for (p in this) {
+      if (p != '_id') {
+        o[p] = this[p];
+      }
+    }
+    Trees.update(this._id, {"$set": o});
   } else {
     Trees.update(this._id, {"$set": update});
   }
