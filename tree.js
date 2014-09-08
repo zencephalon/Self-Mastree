@@ -23,9 +23,15 @@ Tree.findOne = function(o) {
   return tree;
 }
 
+Tree.prototype.incCount = function() {
+  this.update({"$inc": {"count": 1}})
+}
+
 Tree.prototype.kids = function() {
   return _.map(this.children, function(o) {return Tree.findOne(o)});
 }
+
+//Tree.prototype.score 
 
 Tree.prototype.create_child = function(o) {
   o['parent'] = this._id;
@@ -45,6 +51,6 @@ Tree.prototype.update = function(update) {
     }
     Trees.update(this._id, {"$set": o});
   } else {
-    Trees.update(this._id, {"$set": update});
+    Trees.update(this._id, update);
   }
 }

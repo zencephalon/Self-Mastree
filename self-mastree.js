@@ -16,6 +16,7 @@ if (Meteor.isClient) {
   Template.hello.events({
     'click': function () {
       console.log(this);
+      this.incCount();
       console.log(this.count);
     }
   });
