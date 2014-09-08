@@ -31,7 +31,13 @@ Tree.prototype.kids = function() {
   return _.map(this.children, function(o) {return Tree.findOne(o)});
 }
 
-//Tree.prototype.score 
+Tree.prototype.score = function() {
+  if (this.children === []) {
+    return this.count;
+  } else {
+    return _.reduce(this.kids, function(memo, child) { return memo + child.score()}, 0);
+  }
+}
 
 Tree.prototype.create_child = function(o) {
   o['parent'] = this._id;
