@@ -15,6 +15,11 @@ Tree.create = function(o) {
   return new Tree(o);
 }
 
+Tree.findOne = function(o) {
+  tree = new Tree(Trees.findOne(o));
+  return tree;
+}
+
 Tree.prototype.create_child = function(o) {
   o['parent'] = this._id;
   child = Tree.create(o);
