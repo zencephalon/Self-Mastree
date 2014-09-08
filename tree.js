@@ -24,7 +24,7 @@ Tree.findOne = function(o) {
 }
 
 Tree.prototype.kids = function() {
-  return _.map(this.children, function(o) {return new Tree(Trees.findOne(o))});
+  return _.map(this.children, function(o) {return Tree.findOne(o)});
 }
 
 Tree.prototype.create_child = function(o) {
