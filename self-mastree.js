@@ -8,6 +8,11 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.hello.root = function() {
+    console.log(Tree.findOne({root: true}));
+    return Tree.findOne({root: true});
+  }
+
   Template.hello.events({
     'click button': function () {
       // increment the counter when button is clicked

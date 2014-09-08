@@ -11,4 +11,11 @@
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+  {{#with root}}
+    {{> node}}
+  {{/with}}
+</template>
+
+<template name="node">
+  <h2>{{title}}</h2>
 </template>
