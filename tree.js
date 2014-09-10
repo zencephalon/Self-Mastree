@@ -44,6 +44,7 @@ Tree.prototype.kids = function() {
 
 Tree.prototype.create_child = function(o) {
   o['parent'] = this._id;
+  o['uid'] = this.uid;
   child = Tree.create(o);
   this.children.push(child._id);
   this.update();
