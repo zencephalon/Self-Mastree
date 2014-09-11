@@ -1,5 +1,5 @@
 Template.root.root = function() {
-  return Tree.findOne({root: true});
+  return Tree.findOne({root: true, uid: Meteor.userId()});
 }
 
 Template.root.events({
