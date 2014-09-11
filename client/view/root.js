@@ -1,5 +1,9 @@
 Template.root.root = function() {
-  return Tree.findOne({root: true, uid: Meteor.userId()});
+  if (Meteor.userId()) {
+    return Tree.findOne({root: true, uid: Meteor.userId()});
+  } else {
+    return {title: "Sign in to see your Self-Mastree", total_count: 0}
+  }
 }
 
 Template.root.events({
