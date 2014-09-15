@@ -15,8 +15,16 @@ Template.root.events({
 
 ViewNode = {
   select: function(id) {
+    Session.set("selected_node", id)
     $('.selected').removeClass('selected');
     $('div[data-id=' + id + ']').addClass('selected');
+  },
+  selectNextSibling: function() {
+    $next = $('.selected').next('div');
+    console.log($next);
+    if ($next.attr('data-id') !== undefined) {
+      ViewNode.select($next.attr('data-id'));
+    }
   }
 }
 
