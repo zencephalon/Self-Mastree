@@ -13,6 +13,13 @@ Template.root.events({
   }
 });
 
+Mousetrap.bind('down', function() {
+  ViewNode.selectNextSibling();
+});
+Mousetrap.bind('up', function() {
+  ViewNode.selectPrevSibling();
+});
+
 ViewNode = {
   select: function(id) {
     Session.set("selected_node", id)
