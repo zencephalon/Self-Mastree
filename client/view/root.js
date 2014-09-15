@@ -50,6 +50,12 @@ ViewNode = {
     if ($parent.attr('data-id') !== undefined) {
       ViewNode.select($parent.attr('data-id'));
     }
+  },
+  selectChildren: function() {
+    $child = $('.selected').children('ul').children().first();
+    if ($child.attr('data-id') !== undefined) {
+      ViewNode.select($child.attr('data-id'));
+    }
   }
 }
 
