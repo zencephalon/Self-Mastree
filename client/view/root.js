@@ -21,9 +21,14 @@ ViewNode = {
   },
   selectNextSibling: function() {
     $next = $('.selected').next('div');
-    console.log($next);
     if ($next.attr('data-id') !== undefined) {
       ViewNode.select($next.attr('data-id'));
+    }
+  },
+  selectPrevSibling: function() {
+    $prev = $('.selected').next('div');
+    if ($prev.attr('data-id') !== undefined) {
+      ViewNode.select($prev.attr('data-id'));
     }
   }
 }
