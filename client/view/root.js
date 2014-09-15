@@ -30,6 +30,8 @@ ViewNode = {
     $next = $('.selected').next('div');
     if ($next.attr('data-id') !== undefined) {
       ViewNode.select($next.attr('data-id'));
+    } else {
+      ViewNode.select($('.selected').parent().children().first().attr('data-id'));
     }
   },
   selectPrevSibling: function() {
