@@ -19,6 +19,9 @@ Mousetrap.bind('down', function() {
 Mousetrap.bind('up', function() {
   ViewNode.selectPrevSibling();
 });
+Mousetrap.bind('left', function() {
+  ViewNode.selectParent();
+});
 
 ViewNode = {
   select: function(id) {
