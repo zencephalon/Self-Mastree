@@ -9,11 +9,13 @@ Template.root.root = function() {
 Template.root.events({
   'click': function () {
     this.incCount(true);
+    Session.set("selected_node", this._id);
   }
 });
 
 ViewNode = {
   select: function(id) {
+    $('.selected').removeClass('selected');
     $('div[data-id=' + id + ']').addClass('selected');
   }
 }
