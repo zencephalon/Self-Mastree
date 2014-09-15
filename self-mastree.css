@@ -60,6 +60,8 @@ code {
     line-height: 1.4em;
 }
 
+div.selected > p {
+  color: #36AECC;
 }
 
 input {
