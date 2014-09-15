@@ -38,6 +38,8 @@ ViewNode = {
     $prev = $('.selected').prev('div');
     if ($prev.attr('data-id') !== undefined) {
       ViewNode.select($prev.attr('data-id'));
+    } else {
+      ViewNode.select($('.selected').parent().children().last().attr('data-id'));
     }
   }
 }
