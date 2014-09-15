@@ -11,3 +11,8 @@ Template.root.events({
     this.incCount(true);
   }
 });
+
+Tracker.autorun(function() {
+  Session.get("selected_node");
+  // code to select a node div based on this reactive session attr
+})
