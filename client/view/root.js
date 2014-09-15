@@ -22,6 +22,9 @@ Mousetrap.bind('up', function() {
 Mousetrap.bind('left', function() {
   ViewNode.selectParent();
 });
+Mousetrap.bind('right', function() {
+  ViewNode.selectChildren();
+});
 
 ViewNode = {
   select: function(id) {
