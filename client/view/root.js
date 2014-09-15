@@ -33,7 +33,7 @@ ViewNode = {
     }
   },
   selectPrevSibling: function() {
-    $prev = $('.selected').next('div');
+    $prev = $('.selected').prev('div');
     if ($prev.attr('data-id') !== undefined) {
       ViewNode.select($prev.attr('data-id'));
     }
