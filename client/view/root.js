@@ -14,7 +14,7 @@ Template.root.events({
 
 ViewNode = {
   select: function(id) {
-    console.log($('div[data-id=' + id + ']'));
+    $('div[data-id=' + id + ']').addClass('selected');
   }
 }
 
