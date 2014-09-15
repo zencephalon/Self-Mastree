@@ -12,7 +12,15 @@ Template.root.events({
   }
 });
 
+ViewNode = {
+  select: function(id) {
+    console.log($('div[data-id=' + id + ']'));
+  }
+}
+
 Tracker.autorun(function() {
-  Session.get("selected_node");
+  if (Session.get("selected_node") !== undefined) {
+    ViewNode.select(Session.get("selected_node"));
+  }
   // code to select a node div based on this reactive session attr
 })
