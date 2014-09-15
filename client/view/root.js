@@ -41,6 +41,12 @@ ViewNode = {
     } else {
       ViewNode.select($('.selected').parent().children().last().attr('data-id'));
     }
+  },
+  selectParent: function() {
+    $parent = $('.selected').parent().parent('div');
+    if ($parent.attr('data-id') !== undefined) {
+      ViewNode.select($parent.attr('data-id'));
+    }
   }
 }
 
