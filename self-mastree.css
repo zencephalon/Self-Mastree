@@ -60,16 +60,6 @@ code {
     line-height: 1.4em;
 }
 
-#prose_title {
-  font-size: 1.8em;
-  font-family: Georgia; line-height:100%; margin-top: 0.5em; margin-bottom: 0; color: #36AECC; font-style: italic; font-weight: 400;
-  padding: 0;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-#prose_title.private-true {
-  color: #000;
 }
 
 input {
@@ -116,40 +106,6 @@ textarea.saved:focus {
   box-shadow: 0 0 5px #E8F2F5;
 }
 
-#iron-router-progress.spinner:before {
-  border-color: #36AECC;
-}
-
-#revision_display {
-  font-size: .5em;
-}
-
-#revision_display table {
-  margin: 0 0 0 0;
-  border-spacing: 1;
-  font-size: .8em;
-}
-
-#revision_display td a {
-  text-align: center;
-  display: block;
-}
-
-#revision_display td {
-  padding: 0;
-  vertical-align: top;
-  border-top: 1px solid #aaa;
-  border-right: none;
-  border-bottom: none;
-  border-left: none;
-  line-height: 1em;
-}
-
-.hints {
-  font-size: 40%;
-  line-height: 80%;
-}
-
 .standout {
   color: #36AECC;
 }
@@ -167,30 +123,6 @@ textarea.saved:focus {
   color: #ff0000;
 }
 
-#quickswitcher {
-  position: absolute;
-  top: 0;
-  left: 1em;
-  right: 1em;
-  margin-left: 0em;
-}
-
-#switcher {
-  font-size: 2em;
-  font-family: Georgia; line-height:100%; color: #36AECC; font-weight: 400;
-  height: 1.1em;
-  width: 100%;
-}
-
-.edit_topbar {
-  position: relative;
-  margin-bottom: .5em;
-}
-
-#login-dropdown-list {
-  position: relative;
-  padding: 8px 8px 20px 12px;
-}
 
 .login-link-text {
   color: #E8F2F5;
