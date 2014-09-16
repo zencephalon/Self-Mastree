@@ -25,6 +25,7 @@ Mousetrap.bind('ctrl+space', function() {
 ViewNode = {
   insertCreateForm: function() {
     Blaze.render(Template.create_form, $('.selected > ul')[0]);
+    $('input[name="node_title"]').focus();
   },
   select: function(id) {
     Session.set("selected_node", id)
