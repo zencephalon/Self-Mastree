@@ -20,6 +20,9 @@ Mousetrap.bind('right', function() {
 });
 
 ViewNode = {
+  insertCreateForm: function() {
+    Blaze.render(Template.create_form, $('.selected > ul')[0]);
+  },
   select: function(id) {
     Session.set("selected_node", id)
     $('.selected').removeClass('selected');
