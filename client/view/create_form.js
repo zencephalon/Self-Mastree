@@ -2,6 +2,9 @@ Template.create_form.events({
   'submit': function (event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log("YOLOLOL");
+    parent = Tree.findOne(Session.get("selected_node"));
+    $input = $('input[name="node_title"]');
+    parent.create_child({title: $input.val() });
+    $('#create_form').remove();
   }
 });
