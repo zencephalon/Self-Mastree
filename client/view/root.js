@@ -6,13 +6,6 @@ Template.root.root = function() {
   }
 }
 
-Template.root.events({
-  'click': function () {
-    this.incCount(true);
-    Session.set("selected_node", this._id);
-  }
-});
-
 Mousetrap.bind('down', function() {
   ViewNode.selectNextSibling();
 });
