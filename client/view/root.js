@@ -18,6 +18,9 @@ Mousetrap.bind('left', function() {
 Mousetrap.bind('right', function() {
   ViewNode.selectChildren();
 });
+Mousetrap.bind('ctrl+space', function() {
+  ViewNode.insertCreateForm();
+})
 
 ViewNode = {
   insertCreateForm: function() {
