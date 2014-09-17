@@ -20,7 +20,10 @@ Mousetrap.bind('right', function() {
 });
 Mousetrap.bind('ctrl+space', function() {
   ViewNode.insertCreateForm();
-})
+});
+Mousetrap.bind('ctrl+x', function() {
+  ViewNode.removeSelected();
+});
 
 ViewNode = {
   removeSelected: function() {
