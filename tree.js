@@ -64,3 +64,8 @@ Tree.prototype.update = function(update) {
     Trees.update(this._id, update);
   }
 }
+Tree.prototype.remove = function() {
+  Trees.remove(this._id);
+  parent = Tree.findOne(this.parent);
+  parent.removeChild(this._id);
+}
