@@ -23,6 +23,9 @@ Mousetrap.bind('ctrl+space', function() {
 })
 
 ViewNode = {
+  removeSelected: function() {
+    Tree.findOne(Session.get("selected_node")).remove();
+  },
   insertCreateForm: function() {
     Blaze.render(Template.create_form, $('.selected > ul')[0]);
     $('input[name="node_title"]').focus();
