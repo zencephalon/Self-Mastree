@@ -64,6 +64,12 @@ Tree.prototype.update = function(update) {
     Trees.update(this._id, update);
   }
 }
+
+Tree.prototype.removeChild = function(child) {
+  children = _.without(this.children, child);
+  this.update({"$set": {children: children}});
+}
+
 Tree.prototype.remove = function() {
   Trees.remove(this._id);
   parent = Tree.findOne(this.parent);
