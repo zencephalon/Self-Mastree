@@ -6,11 +6,11 @@ function dropData() {
 function seedData() {
   uid = Accounts.createUser({email: "mkbunday@gmail.com", password: "zen"});
   tree = Tree.create({title: "Matthew Bunday", root: true, uid: uid});
-  str_tree = tree.create_child({title: "Strength"});
-  str_tree.create_child({title: "Taijutsu"});
-  str_tree.create_child({title: "Bodyweight"});
-  tree.create_child({title: "Skill"});
-  tree.create_child({title: "Discernment"});
+  str_tree = tree.createChild({title: "Strength"});
+  str_tree.createChild({title: "Taijutsu"});
+  str_tree.createChild({title: "Bodyweight"});
+  tree.createChild({title: "Skill"});
+  tree.createChild({title: "Discernment"});
 }
 
 if (Meteor.isServer) {

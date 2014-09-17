@@ -42,7 +42,7 @@ Tree.prototype.kids = function() {
   return _.map(this.children, function(o) {return Tree.findOne(o)});
 }
 
-Tree.prototype.create_child = function(o) {
+Tree.prototype.createChild = function(o) {
   o['parent'] = this._id;
   o['uid'] = this.uid;
   child = Tree.create(o);
