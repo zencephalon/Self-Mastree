@@ -169,3 +169,8 @@ textarea.saved:focus {
 .hidden {
   display: none;
 }
+
+#login-dropdown-list {
+  position: relative;
+  padding: 8px 8px 20px 12px;
+}
