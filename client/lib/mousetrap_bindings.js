@@ -1,18 +1,18 @@
 Mousetrap.bind('down', function() {
-  ViewNode.select.nextSibling();
+  TreeView.select.nextSibling();
 });
 Mousetrap.bind('up', function() {
-  ViewNode.select.prevSibling();
+  TreeView.select.prevSibling();
 });
 Mousetrap.bind('left', function() {
-  ViewNode.select.parent();
+  TreeView.select.parent();
 });
 Mousetrap.bind('right', function() {
-  ViewNode.select.children();
+  TreeView.select.children();
 });
 Mousetrap.bind('ctrl+space', function() {
-  ViewNode.insertCreateForm();
+  TreeView.insertCreateForm();
 });
 Mousetrap.bind('ctrl+x', function() {
-  ViewNode.removeSelected();
+  TreeView.removeSelected();
 });

@@ -1,4 +1,4 @@
-ViewNode = {
+TreeView = {
   removeSelected: function() {
     Tree.findOne(Session.get("selected_node")).remove();
   },
@@ -33,31 +33,31 @@ ViewNode = {
       $('div[data-id=' + id + ']').addClass('selected');
     },
     nextSibling: function() {
-      $next = ViewNode.find.nextSibling();
+      $next = TreeView.find.nextSibling();
       if ($next !== undefined) {
-        ViewNode.select.byId($next);
+        TreeView.select.byId($next);
       } else {
-        ViewNode.select.byId(ViewNode.find.firstSibling());
+        TreeView.select.byId(TreeView.find.firstSibling());
       }
     },
     prevSibling: function() {
-      $prev = ViewNode.find.prevSibling();
+      $prev = TreeView.find.prevSibling();
       if ($prev !== undefined) {
-        ViewNode.select.byId($prev);
+        TreeView.select.byId($prev);
       } else {
-        ViewNode.select.byId(ViewNode.find.lastSibling());
+        TreeView.select.byId(TreeView.find.lastSibling());
       }
     },
     parent: function() {
-      $parent = ViewNode.find.parent();
+      $parent = TreeView.find.parent();
       if ($parent !== undefined) {
-        ViewNode.select.byId($parent);
+        TreeView.select.byId($parent);
       }
     },
     children: function() {
-      $child = ViewNode.find.firstChild();
+      $child = TreeView.find.firstChild();
       if ($child !== undefined) {
-        ViewNode.select.byId($child);
+        TreeView.select.byId($child);
       }
     }
   },
@@ -65,6 +65,6 @@ ViewNode = {
 
 Tracker.autorun(function() {
   if (Session.get("selected_node") !== undefined) {
-    ViewNode.select.byId(Session.get("selected_node"));
+    TreeView.select.byId(Session.get("selected_node"));
   }
 });
