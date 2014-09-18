@@ -1,4 +1,4 @@
-Template.node.events({
+Template.tree.events({
   'click': function (event) {
     event.stopPropagation();
     this.incCount(true);

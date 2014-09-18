@@ -1,10 +1,10 @@
 TreeView = {
   removeSelected: function() {
-    Tree.findOne(Session.get("selected_node")).remove();
+    Tree.findOne(Session.get("selected_tree")).remove();
   },
   insertCreateForm: function() {
     Blaze.render(Template.create_form, $('.selected > ul')[0]);
-    $('input[name="node_title"]').focus();
+    $('input[name="tree_title"]').focus();
   },
   find: {
     nextSibling: function() {
@@ -28,7 +28,7 @@ TreeView = {
   },
   select: {
     byId: function(id) {
-      Session.set("selected_node", id)
+      Session.set("selected_tree", id)
       $('.selected').removeClass('selected');
       $('div[data-id=' + id + ']').addClass('selected');
     },
@@ -64,7 +64,7 @@ TreeView = {
 }
 
 Tracker.autorun(function() {
-  if (Session.get("selected_node") !== undefined) {
-    TreeView.select.byId(Session.get("selected_node"));
+  if (Session.get("selected_tree") !== undefined) {
+    TreeView.select.byId(Session.get("selected_tree"));
   }
 });

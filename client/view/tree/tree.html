@@ -1,9 +1,9 @@
-<template name="node">
-<div class="node" data-id="{{_id}}">
+<template name="tree">
+<div class="tree" data-id="{{_id}}">
   <p>{{title}} : {{total_count}}</p>
   <ul>
   {{#each kids}}
-      {{> node}}
+      {{> tree}}
   {{/each}}
   </ul>
 </div>
