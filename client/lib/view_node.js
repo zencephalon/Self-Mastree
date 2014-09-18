@@ -14,12 +14,18 @@ ViewNode = {
   findNextSibling: function() {
     return $('.selected').next('div');
   },
+  findFirstSibling: function() {
+    return $('.selected').parent().children().first();
+  },
+  findLastSibling: function() {
+    return $('.selected').parent().children().last();
+  },
   selectNextSibling: function() {
-    $next = findNextSibling();
+    $next = ViewNode.findNextSibling();
     if ($next.attr('data-id') !== undefined) {
       ViewNode.select($next.attr('data-id'));
     } else {
-      ViewNode.select($('.selected').parent().children().first().attr('data-id'));
+      ViewNode.select(ViewNode.findFirstSibling().attr('data-id'));
     }
   },
   selectPrevSibling: function() {
@@ -27,7 +33,7 @@ ViewNode = {
     if ($prev.attr('data-id') !== undefined) {
       ViewNode.select($prev.attr('data-id'));
     } else {
-      ViewNode.select($('.selected').parent().children().last().attr('data-id'));
+      ViewNode.select(ViewNode.findLastSibling().attr('data-id'));
     }
   },
   selectParent: function() {
