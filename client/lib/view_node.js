@@ -14,47 +14,47 @@ ViewNode = {
   find: {
     nextSibling: function() {
       return $('.selected').next('div').attr('data-id');
+    },
+    prevSibling: function() {
+      return $('.selected').prev('div').attr('data-id');
+    },
+    firstSibling: function() {
+      return $('.selected').parent().children().first().attr('data-id');
+    },
+    lastSibling: function() {
+      return $('.selected').parent().children().last().attr('data-id');
+    },
+    parent: function() {
+      return $('.selected').parent().parent('div').attr('data-id');
+    },
+    firstChild: function() {
+      return $('.selected').children('ul').children().first().attr('data-id');
     }
-  },
-  findPrevSibling: function() {
-    return $('.selected').prev('div').attr('data-id');
-  },
-  findFirstSibling: function() {
-    return $('.selected').parent().children().first().attr('data-id');
-  },
-  findLastSibling: function() {
-    return $('.selected').parent().children().last().attr('data-id');
-  },
-  findParent: function() {
-    return $('.selected').parent().parent('div').attr('data-id');
-  },
-  findFirstChild: function() {
-    return $('.selected').children('ul').children().first().attr('data-id');
   },
   selectNextSibling: function() {
     $next = ViewNode.find.nextSibling();
     if ($next !== undefined) {
       ViewNode.select($next);
     } else {
-      ViewNode.select(ViewNode.findFirstSibling());
+      ViewNode.select(ViewNode.find.firstSibling());
     }
   },
   selectPrevSibling: function() {
-    $prev = ViewNode.findPrevSibling();
+    $prev = ViewNode.find.prevSibling();
     if ($prev !== undefined) {
       ViewNode.select($prev);
     } else {
-      ViewNode.select(ViewNode.findLastSibling());
+      ViewNode.select(ViewNode.find.lastSibling());
     }
   },
   selectParent: function() {
-    $parent = ViewNode.findParent();
+    $parent = ViewNode.find.parent();
     if ($parent !== undefined) {
       ViewNode.select($parent);
     }
   },
   selectChildren: function() {
-    $child = findFirstChild();
+    $child = ViewNode.find.firstChild();
     if ($child !== undefined) {
       ViewNode.select($child);
     }
