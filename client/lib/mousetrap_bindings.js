@@ -1,14 +1,14 @@
 Mousetrap.bind('down', function() {
-  ViewNode.selectNextSibling();
+  ViewNode.select.nextSibling();
 });
 Mousetrap.bind('up', function() {
-  ViewNode.selectPrevSibling();
+  ViewNode.select.prevSibling();
 });
 Mousetrap.bind('left', function() {
-  ViewNode.selectParent();
+  ViewNode.select.parent();
 });
 Mousetrap.bind('right', function() {
-  ViewNode.selectChildren();
+  ViewNode.select.children();
 });
 Mousetrap.bind('ctrl+space', function() {
   ViewNode.insertCreateForm();
