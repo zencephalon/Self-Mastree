@@ -11,8 +11,11 @@ ViewNode = {
     $('.selected').removeClass('selected');
     $('div[data-id=' + id + ']').addClass('selected');
   },
+  findNextSibling: function() {
+    return $('.selected').next('div');
+  },
   selectNextSibling: function() {
-    $next = $('.selected').next('div');
+    $next = findNextSibling();
     if ($next.attr('data-id') !== undefined) {
       ViewNode.select($next.attr('data-id'));
     } else {
