@@ -12,28 +12,31 @@ ViewNode = {
     $('div[data-id=' + id + ']').addClass('selected');
   },
   findNextSibling: function() {
-    return $('.selected').next('div');
+    return $('.selected').next('div').attr('data-id');
+  },
+  findPrevSibling: function() {
+    return $('.selected').prev('div').attr('data-id');
   },
   findFirstSibling: function() {
-    return $('.selected').parent().children().first();
+    return $('.selected').parent().children().first().attr('data-id');
   },
   findLastSibling: function() {
-    return $('.selected').parent().children().last();
+    return $('.selected').parent().children().last().attr('data-id');
   },
   selectNextSibling: function() {
     $next = ViewNode.findNextSibling();
-    if ($next.attr('data-id') !== undefined) {
-      ViewNode.select($next.attr('data-id'));
+    if ($next !== undefined) {
+      ViewNode.select($next);
     } else {
-      ViewNode.select(ViewNode.findFirstSibling().attr('data-id'));
+      ViewNode.select(ViewNode.findFirstSibling());
     }
   },
   selectPrevSibling: function() {
-    $prev = $('.selected').prev('div');
-    if ($prev.attr('data-id') !== undefined) {
-      ViewNode.select($prev.attr('data-id'));
+    $prev = ViewNode.findPrevSibling();
+    if ($prev !== undefined) {
+      ViewNode.select($prev);
     } else {
-      ViewNode.select(ViewNode.findLastSibling().attr('data-id'));
+      ViewNode.select(ViewNode.findLastSibling());
     }
   },
   selectParent: function() {
