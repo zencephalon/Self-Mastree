@@ -11,8 +11,10 @@ ViewNode = {
     $('.selected').removeClass('selected');
     $('div[data-id=' + id + ']').addClass('selected');
   },
-  findNextSibling: function() {
-    return $('.selected').next('div').attr('data-id');
+  find: {
+    nextSibling: function() {
+      return $('.selected').next('div').attr('data-id');
+    }
   },
   findPrevSibling: function() {
     return $('.selected').prev('div').attr('data-id');
@@ -30,7 +32,7 @@ ViewNode = {
     return $('.selected').children('ul').children().first().attr('data-id');
   },
   selectNextSibling: function() {
-    $next = ViewNode.findNextSibling();
+    $next = ViewNode.find.nextSibling();
     if ($next !== undefined) {
       ViewNode.select($next);
     } else {
