@@ -23,6 +23,9 @@ ViewNode = {
   findLastSibling: function() {
     return $('.selected').parent().children().last().attr('data-id');
   },
+  findParent: function() {
+    return $('.selected').parent().parent('div').attr('data-id');
+  },
   selectNextSibling: function() {
     $next = ViewNode.findNextSibling();
     if ($next !== undefined) {
@@ -40,9 +43,9 @@ ViewNode = {
     }
   },
   selectParent: function() {
-    $parent = $('.selected').parent().parent('div');
-    if ($parent.attr('data-id') !== undefined) {
-      ViewNode.select($parent.attr('data-id'));
+    $parent = ViewNode.findParent();
+    if ($parent !== undefined) {
+      ViewNode.select($parent);
     }
   },
   selectChildren: function() {
