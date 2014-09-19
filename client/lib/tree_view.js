@@ -31,6 +31,15 @@ TreeView = {
     },
     firstChild: function() {
       return $('.selected').children('ul').children().first().attr('data-id');
+    },
+    nearest: function() {
+      $next = TreeView.find.nextSibling();
+      console.log($next)
+      if ($next.length > 0 && !$next.hasClass('selected')) {
+        return $next.attr('data-id');
+      } else {
+        return TreeView.find.parent();
+      }
     }
   },
   select: {
