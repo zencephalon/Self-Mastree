@@ -1,14 +1,21 @@
 TreeView = {
   removeSelected: function() {
+    nearest = TreeView.find.nearest();
     Tree.findOne(Session.get("selected_tree")).remove();
+    TreeView.select.byId(nearest);
   },
   insertCreateForm: function() {
     Blaze.render(Template.create_form, $('.selected > ul')[0]);
     $('input[name="tree_title"]').focus();
   },
   find: {
-    nextSibling: function() {
-      return $('.selected').next('div').attr('data-id');
+    nextSibling: function(id) {
+      $ele = $('.selected').next('div');
+      if (id) {
+        return $ele.attr('data-id');
+      } else {
+        return $ele;
+      }
     },
     prevSibling: function() {
       return $('.selected').prev('div').attr('data-id');
@@ -33,7 +40,7 @@ TreeView = {
       $('div[data-id=' + id + ']').addClass('selected');
     },
     nextSibling: function() {
-      $next = TreeView.find.nextSibling();
+      $next = TreeView.find.nextSibling(true);
       if ($next !== undefined) {
         TreeView.select.byId($next);
       } else {
