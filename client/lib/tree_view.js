@@ -17,20 +17,45 @@ TreeView = {
         return $ele;
       }
     },
-    prevSibling: function() {
-      return $('.selected').prev('div').attr('data-id');
+    prevSibling: function(id) {
+      $ele = $('.selected').prev('div');
+      if (id) {
+        return $ele.attr('data-id');
+      } else {
+        return $ele;
+      }
     },
-    firstSibling: function() {
-      return $('.selected').parent().children().first().attr('data-id');
+    firstSibling: function(id) {
+      $ele = $('.selected').parent().children().first().attr('data-id');
+      if (id) {
+        return $ele.attr('data-id');
+      } else {
+        return $ele;
+      }
     },
-    lastSibling: function() {
-      return $('.selected').parent().children().last().attr('data-id');
+    lastSibling: function(id) {
+      $ele = $('.selected').parent().children().last().attr('data-id');
+      if (id) {
+        return $ele.attr('data-id');
+      } else {
+        return $ele;
+      }
     },
-    parent: function() {
-      return $('.selected').parent().parent('div').attr('data-id');
+    parent: function(id) {
+      $ele = $('.selected').parent().parent('div');
+      if (id) {
+        return $ele.attr('data-id');
+      } else {
+        return $ele;
+      }
     },
-    firstChild: function() {
-      return $('.selected').children('ul').children().first().attr('data-id');
+    firstChild: function(id) {
+      $ele = $('.selected').children('ul').children().first();
+      if (id) {
+        return $ele.attr('data-id');
+      } else {
+        return $ele;
+      }
     },
     nearest: function() {
       $next = TreeView.find.nextSibling();
@@ -57,7 +82,7 @@ TreeView = {
       }
     },
     prevSibling: function() {
-      $prev = TreeView.find.prevSibling();
+      $prev = TreeView.find.prevSibling(true);
       if ($prev !== undefined) {
         TreeView.select.byId($prev);
       } else {
@@ -65,13 +90,13 @@ TreeView = {
       }
     },
     parent: function() {
-      $parent = TreeView.find.parent();
+      $parent = TreeView.find.parent(true);
       if ($parent !== undefined) {
         TreeView.select.byId($parent);
       }
     },
     children: function() {
-      $child = TreeView.find.firstChild();
+      $child = TreeView.find.firstChild(true);
       if ($child !== undefined) {
         TreeView.select.byId($child);
       }
