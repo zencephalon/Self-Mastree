@@ -16,7 +16,9 @@ Template.quickswitcher.settings = function() {
 Template.quickswitcher.events({
   'submit form': function(event) { 
     event.preventDefault();
-
+    tree = Tree.findOneByTitle($('#switcher').val());
+    console.log(tree);
+    TreeView.select.byId(tree._id);
   }
 });
 
