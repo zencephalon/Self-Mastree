@@ -174,3 +174,18 @@ textarea.saved:focus {
   position: relative;
   padding: 8px 8px 20px 12px;
 }
+
+#quickswitcher {
+  position: absolute;
+  top: 0;
+  left: 1em;
+  right: 1em;
+  margin-left: 0em;
+}
+
+#switcher {
+  font-size: 2em;
+  font-family: Georgia; line-height:100%; color: #36AECC; font-weight: 400;
+  height: 1.1em;
+  width: 100%;
+}
