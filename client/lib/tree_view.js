@@ -75,10 +75,14 @@ TreeView = {
     },
     nextSibling: function() {
       $next = TreeView.find.nextSibling(true);
-      if ($next !== undefined) {
+      $first = TreeView.find.firstSibling(true);
+
+      if ($next === undefined && ($first === undefined || $first === Session.get("selected_tree"))) {
+        TreeView.select.byId(TreeView.find.firstChild(true));
+      } else if ($next !== undefined) {
         TreeView.select.byId($next);
       } else {
-        TreeView.select.byId(TreeView.find.firstSibling());
+        TreeView.select.byId($first);
       }
     },
     prevSibling: function() {
