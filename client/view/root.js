@@ -5,3 +5,9 @@ Template.root.root = function() {
     return {title: "Sign in to see your Self-Mastree", total_count: 0}
   }
 }
+
+Template.root.rendered = function() {
+  setTimeout(function() {
+    TreeView.select.byId(Template.root.root()._id);
+  }, 400);
+}
