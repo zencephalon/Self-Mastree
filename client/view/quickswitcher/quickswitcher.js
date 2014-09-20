@@ -8,7 +8,7 @@ Template.quickswitcher.settings = function() {
       end_token: '',
       collection: Trees,
       field: "title",
-      template: Template.prose_url_title
+      template: Template.qs_tree_display
     }]
   }
 }
