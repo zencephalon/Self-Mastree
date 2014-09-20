@@ -20,8 +20,7 @@ Tree.create = function(o) {
 }
 
 Tree.findOne = function(o) {
-  tree = new Tree(Trees.findOne(o));
-  return tree;
+  return new Tree(Trees.findOne(o));
 }
 
 Tree.prototype.getParent = function() {
