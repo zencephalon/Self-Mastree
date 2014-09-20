@@ -26,7 +26,7 @@ TreeView = {
       }
     },
     firstSibling: function(id) {
-      $ele = $('.selected').parent().children().first().attr('data-id');
+      $ele = $('.selected').parent().children().first();
       if (id) {
         return $ele.attr('data-id');
       } else {
@@ -34,7 +34,7 @@ TreeView = {
       }
     },
     lastSibling: function(id) {
-      $ele = $('.selected').parent().children().last().attr('data-id');
+      $ele = $('.selected').parent().children().last();
       if (id) {
         return $ele.attr('data-id');
       } else {
