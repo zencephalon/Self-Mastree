@@ -23,6 +23,10 @@ Tree.findOne = function(o) {
   return new Tree(Trees.findOne(o));
 }
 
+Tree.findOneByTitle = function(title) {
+  return new Tree(Trees.findOne({title: title}))
+}
+
 Tree.prototype.getParent = function() {
   return Tree.findOne(this.parent);
 }
