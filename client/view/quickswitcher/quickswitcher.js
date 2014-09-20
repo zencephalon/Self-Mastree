@@ -19,6 +19,7 @@ Template.quickswitcher.events({
     tree = Tree.findOneByTitle($('#switcher').val());
     console.log(tree);
     TreeView.select.byId(tree._id);
+    $('#quickswitcher').hide();
   }
 });
 
