@@ -87,10 +87,14 @@ TreeView = {
     },
     prevSibling: function() {
       $prev = TreeView.find.prevSibling(true);
-      if ($prev !== undefined) {
+      $last = TreeView.find.lastSibling(true);
+
+      if ($prev === undefined && ($last === undefined || $last === Session.get("selected_tree"))) {
+        TreeView.select.byId(TreeView.find.parent(true));
+      } else if ($prev !== undefined) {
         TreeView.select.byId($prev);
       } else {
-        TreeView.select.byId(TreeView.find.lastSibling());
+        TreeView.select.byId($last);
       }
     },
     parent: function() {
