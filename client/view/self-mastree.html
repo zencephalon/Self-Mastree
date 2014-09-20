@@ -4,7 +4,13 @@
 </head>
 
 <body>
-  {{> loginButtons}}
-  {{> quickswitcher}}
-  {{> root}}
+  <div id="content">
+    <header>
+      <a href="/index"><img src="/zenchinese.png" class="logo"/></a>
+      {{> loginButtons}}
+      {{> quickswitcher}}
+    </header>
+    {{> quickswitcher}}
+    {{> root}}
+  </div>
 </body>
