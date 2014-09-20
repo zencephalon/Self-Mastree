@@ -10,6 +10,10 @@ Mousetrap.bind('left', function() {
 Mousetrap.bind('right', function() {
   TreeView.select.children();
 });
+Mousetrap.bind('space', function() {
+  tree = Tree.findOne(Session.get("selected_tree"));
+  tree.incCount(true);
+});
 Mousetrap.bind('ctrl+space', function() {
   TreeView.insertCreateForm();
 });
