@@ -14,7 +14,7 @@ Mousetrap.bind('space', function() {
   tree = Tree.findOne(Session.get("selected_tree"));
   tree.incCount(true);
 });
-Mousetrap.bind('ctrl+space', function() {
+Mousetrap.bind('ctrl+n', function() {
   TreeView.insertCreateForm();
 });
 Mousetrap.bind('ctrl+x', function() {
