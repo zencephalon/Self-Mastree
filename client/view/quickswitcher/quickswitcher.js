@@ -8,20 +8,16 @@ Template.quickswitcher.settings = function() {
       end_token: '',
       collection: Trees,
       field: "title",
-      template: Template.qs_tree_display
+      template: Template.qs_tree_display,
+      callback: function(doc, element) {
+        tree = Tree.findOneByTitle($('#switcher').val());
+        console.log(tree);
+        TreeView.select.byId(tree._id);
+        $('#quickswitcher').hide();
+      }
     }]
   }
 }
-
-Template.quickswitcher.events({
-  'submit form': function(event) { 
-    event.preventDefault();
-    tree = Tree.findOneByTitle($('#switcher').val());
-    console.log(tree);
-    TreeView.select.byId(tree._id);
-    $('#quickswitcher').hide();
-  }
-});
 
 Template.quickswitcher.rendered = function() {
   Mousetrap.bind('ctrl+space', function(e) { 
