@@ -14,6 +14,10 @@ Mousetrap.bind('space', function() {
   tree = Tree.findOne(Session.get("selected_tree"));
   tree.incCount(true);
 });
+Mousetrap.bind('shift+space', function() {
+  tree = Tree.findOne(Session.get("selected_tree"));
+  tree.incCount(true, -1);
+});
 Mousetrap.bind('ctrl+n', function() {
   TreeView.insertCreateForm();
 });

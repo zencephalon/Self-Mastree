@@ -31,13 +31,16 @@ Tree.prototype.getParent = function() {
   return Tree.findOne(this.parent);
 }
 
-Tree.prototype.incCount = function(own) {
-  if (own === true) {
-    this.update({"$inc": {"count": 1}});
+Tree.prototype.incCount = function(own, amount) {
+  if (amount === undefined) {
+    amount = 1;
   }
-  this.update({"$inc": {"total_count": 1}});
+  if (own === true) {
+    this.update({"$inc": {"count": amount}});
+  }
+  this.update({"$inc": {"total_count": amount}});
   if (this.parent !== undefined)  {
-    this.getParent().incCount(false);
+    this.getParent().incCount(false, amount);
   }
 }
 
