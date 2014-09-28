@@ -12,7 +12,7 @@ TreeView = {
     nextSibling: function(id) {
       $ele = $('.selected').next('div');
       if (id) {
-        return $ele.attr('data-id');
+        return $ele.data('id');
       } else {
         return $ele;
       }
@@ -20,7 +20,7 @@ TreeView = {
     prevSibling: function(id) {
       $ele = $('.selected').prev('div');
       if (id) {
-        return $ele.attr('data-id');
+        return $ele.data('id');
       } else {
         return $ele;
       }
@@ -28,7 +28,7 @@ TreeView = {
     firstSibling: function(id) {
       $ele = $('.selected').parent().children().first();
       if (id) {
-        return $ele.attr('data-id');
+        return $ele.data('id');
       } else {
         return $ele;
       }
@@ -36,7 +36,7 @@ TreeView = {
     lastSibling: function(id) {
       $ele = $('.selected').parent().children().last();
       if (id) {
-        return $ele.attr('data-id');
+        return $ele.data('id');
       } else {
         return $ele;
       }
@@ -44,7 +44,7 @@ TreeView = {
     parent: function(id) {
       $ele = $('.selected').parent().parent('div');
       if (id) {
-        return $ele.attr('data-id');
+        return $ele.data('id');
       } else {
         return $ele;
       }
@@ -52,7 +52,7 @@ TreeView = {
     firstChild: function(id) {
       $ele = $('.selected').children('ul').children().first();
       if (id) {
-        return $ele.attr('data-id');
+        return $ele.data('id');
       } else {
         return $ele;
       }
