@@ -24,3 +24,7 @@ Mousetrap.bind('ctrl+n', function() {
 Mousetrap.bind('ctrl+x', function() {
   TreeView.removeSelected();
 });
+Mousetrap.bind('enter', function() {
+  tree = Tree.findOne(Session.get("selected_tree"));
+  tree.toggleFold();
+});
