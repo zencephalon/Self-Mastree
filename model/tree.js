@@ -30,6 +30,26 @@ Tree.findOneByTitle = function(title) {
   return new Tree(Trees.findOne({title: title}))
 }
 
+Tree.yearKey = function (date) {
+  return "date." + date.getFullYear();
+}
+
+Tree.monthKey = function (date) {
+  return Tree.yearKey(date) + "." + date.getMonth();
+}
+
+Tree.monthDayKey = function (date) {
+  return Tree.monthKey(date) + "." + date.getDate();
+}
+
+Tree.weekDayKey = function(date) {
+  return Tree.monthDayKey(date) + "." + date.getDay();
+}
+
+Tree.hourKey = function(date) {
+  return Tree.weekDayKey(date) + "." + date.getHours();
+}
+
 Tree.prototype.getParent = function() {
   return Tree.findOne(this.parent);
 }
@@ -45,21 +65,12 @@ Tree.prototype.incCount = function(own, amount) {
   }
 
   date = new Date();
-  year = date.getFullYear();
-  key = "date." + year;
-  update[key + ".count"] = amount;
-  month = date.getMonth();
-  key += "." + month;
-  update[key + ".count"] = amount;
-  month_day = date.getDate();
-  key += "." + month_day;
-  update[key + ".count"] = amount;
-  week_day = date.getDay();
-  key += "." + week_day;
-  update[key + ".count"] = amount;
-  hour = date.getHours();
-  key += "." + hour;
-  update[key] = amount;
+
+  update[Tree.yearKey(date) + ".count"] = amount;
+  update[Tree.monthKey(date) + ".count"] = amount;
+  update[Tree.monthDayKey(date) + ".count"] = amount;
+  update[Tree.weekDayKey(date) + ".count"] = amount;
+  update[Tree.hourkey(date)] = amount;
   update["total_count"] = amount;
   this.update({"$inc": update});
 
