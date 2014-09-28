@@ -70,7 +70,7 @@ Tree.prototype.incCount = function(own, amount) {
   update[Tree.monthKey(date) + ".count"] = amount;
   update[Tree.monthDayKey(date) + ".count"] = amount;
   update[Tree.weekDayKey(date) + ".count"] = amount;
-  update[Tree.hourkey(date)] = amount;
+  update[Tree.hourKey(date)] = amount;
   update["total_count"] = amount;
   this.update({"$inc": update});
 
