@@ -5,3 +5,7 @@ Template.tree.events({
     TreeView.select.byId(this._id);
   }
 });
+
+Template.tree.today_count = function(tree) {
+
+}
