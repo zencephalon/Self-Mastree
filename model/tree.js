@@ -39,7 +39,20 @@ Tree.prototype.incCount = function(own, amount) {
     amount = 1;
   }
   if (own === true) {
-    this.update({"$inc": {"count": amount}});
+    date = new Date();
+    update = {"count": amount}
+    year = date.getFullYear();
+    update[year + ".count"] = amount;
+    month = date.getMonth();
+    update[year + "." + month + ".count"] = amount;
+    month_day = date.getDate();
+    update[year + "." + month + "." + month_day + ".count"] = amount;
+    week_day = date.getDay();
+    update[year + "." + month + "." + month_day + "." + week_day + ".count"] = amount;
+    hour = date.getHours();
+    key_string = "date." + year + "." + month + "." + month_day + "." + week_day + "." + hour;
+    update[key_string] = amount;
+    this.update({"$inc": update});
   }
   this.update({"$inc": {"total_count": amount}});
   if (this.parent !== undefined)  {
