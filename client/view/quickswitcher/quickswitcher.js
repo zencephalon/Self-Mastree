@@ -11,7 +11,6 @@ Template.quickswitcher.settings = function() {
       template: Template.qs_tree_display,
       callback: function(doc, element) {
         tree = Tree.findOneByTitle($('#switcher').val());
-        console.log(tree);
         TreeView.select.byId(tree._id);
         $('#quickswitcher').hide();
       }
@@ -20,7 +19,7 @@ Template.quickswitcher.settings = function() {
 }
 
 Template.quickswitcher.rendered = function() {
-  Mousetrap.bind('ctrl+space', function(e) { 
+  Mousetrap.bind('ctrl+space', function(e) {
     e.preventDefault();
     $('#quickswitcher').show();
 
