@@ -38,23 +38,31 @@ Tree.prototype.incCount = function(own, amount) {
   if (amount === undefined) {
     amount = 1;
   }
+
+  update = {};
   if (own === true) {
-    date = new Date();
-    update = {"count": amount}
-    year = date.getFullYear();
-    update["date." + year + ".count"] = amount;
-    month = date.getMonth();
-    update["date." + year + "." + month + ".count"] = amount;
-    month_day = date.getDate();
-    update["date." + year + "." + month + "." + month_day + ".count"] = amount;
-    week_day = date.getDay();
-    update["date." + year + "." + month + "." + month_day + "." + week_day + ".count"] = amount;
-    hour = date.getHours();
-    key_string = "date." + year + "." + month + "." + month_day + "." + week_day + "." + hour;
-    update[key_string] = amount;
-    this.update({"$inc": update});
+    update["count"] = amount
   }
-  this.update({"$inc": {"total_count": amount}});
+
+  date = new Date();
+  year = date.getFullYear();
+  key = "date." + year;
+  update[key + ".count"] = amount;
+  month = date.getMonth();
+  key += "." + month;
+  update[key + ".count"] = amount;
+  month_day = date.getDate();
+  key += "." + month_day;
+  update[key + ".count"] = amount;
+  week_day = date.getDay();
+  key += "." + week_day;
+  update[key + ".count"] = amount;
+  hour = date.getHours();
+  key += "." + hour;
+  update[key] = amount;
+  update["total_count"] = amount;
+  this.update({"$inc": update});
+
   if (this.parent !== undefined)  {
     this.getParent().incCount(false, amount);
   }
