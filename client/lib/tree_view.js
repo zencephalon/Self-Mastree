@@ -60,9 +60,14 @@ TreeView = {
     nearest: function() {
       $next = TreeView.find.nextSibling();
       if ($next.length > 0 && !$next.hasClass('selected')) {
-        return $next.attr('data-id');
+        return $next.data('id');
       } else {
-        return TreeView.find.parent();
+        $prev = TreeView.find.prevSibling();
+        if ($prev.length > 0 && !$prev.hasClass('selected')) {
+          return $prev.data('id');
+        } else {
+          return TreeView.find.parent(true);
+        }
       }
     }
   },
