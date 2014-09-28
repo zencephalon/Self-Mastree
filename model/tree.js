@@ -10,6 +10,9 @@ Tree.create = function(o) {
   if (o['children'] === undefined) {
     o['children'] = [];
   }
+  if (o['folded'] === undefined) {
+    o['folded'] = false;
+  }
   o['count'] = 0;
   o['total_count'] = 0;
 
@@ -80,4 +83,9 @@ Tree.prototype.remove = function() {
   Trees.remove(this._id);
   parent = Tree.findOne(this.parent);
   parent.removeChild(this._id);
+}
+
+
+Tree.prototype.toggleFold = function () {
+  this.update({"$set": {folded: !this.folded}});
 }
