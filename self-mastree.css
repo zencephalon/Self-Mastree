@@ -66,7 +66,7 @@ a:hover {
     text-decoration: underline;
 }
 
-div.selected > p {
+div.focused > p {
   color: #36AECC;
 }
 

@@ -1,12 +1,11 @@
 TreeView = {
-  removeSelected: function() {
+  removeFocused: function() {
     nearest = TreeView.find.nearest();
-    Tree.findOne(Session.get("selected_tree")).remove();
     Tree.focused().archive();
-    TreeView.select.byId(nearest);
+    TreeView.focus.byId(nearest);
   },
   insertCreateForm: function() {
-    Blaze.render(Template.create_form, $('.selected > ul')[0]);
+    Blaze.render(Template.create_form, $('.focused > ul')[0]);
     $('input[name="tree_title"]').focus();
   },
   insertRenameForm: function() {
@@ -16,7 +15,7 @@ TreeView = {
   },
   find: {
     nextSibling: function(id) {
-      $ele = $('.selected').next('div');
+      $ele = $('.focused').next('div');
       if (id) {
         return $ele.data('id');
       } else {
@@ -24,7 +23,7 @@ TreeView = {
       }
     },
     prevSibling: function(id) {
-      $ele = $('.selected').prev('div');
+      $ele = $('.focused').prev('div');
       if (id) {
         return $ele.data('id');
       } else {
@@ -32,7 +31,7 @@ TreeView = {
       }
     },
     firstSibling: function(id) {
-      $ele = $('.selected').parent().children().first();
+      $ele = $('.focused').parent().children().first();
       if (id) {
         return $ele.data('id');
       } else {
@@ -40,7 +39,7 @@ TreeView = {
       }
     },
     lastSibling: function(id) {
-      $ele = $('.selected').parent().children().last();
+      $ele = $('.focused').parent().children().last();
       if (id) {
         return $ele.data('id');
       } else {
@@ -48,7 +47,7 @@ TreeView = {
       }
     },
     parent: function(id) {
-      $ele = $('.selected').parent().parent('div');
+      $ele = $('.focused').parent().parent('div');
       if (id) {
         return $ele.data('id');
       } else {
@@ -56,7 +55,7 @@ TreeView = {
       }
     },
     firstChild: function(id) {
-      $ele = $('.selected').children('ul').children().first();
+      $ele = $('.focused').children('ul').children().first();
       if (id) {
         return $ele.data('id');
       } else {
@@ -65,11 +64,11 @@ TreeView = {
     },
     nearest: function() {
       $next = TreeView.find.nextSibling();
-      if ($next.length > 0 && !$next.hasClass('selected')) {
+      if ($next.length > 0 && !$next.hasClass('focused')) {
         return $next.data('id');
       } else {
         $prev = TreeView.find.prevSibling();
-        if ($prev.length > 0 && !$prev.hasClass('selected')) {
+        if ($prev.length > 0 && !$prev.hasClass('focused')) {
           return $prev.data('id');
         } else {
           return TreeView.find.parent(true);
@@ -77,53 +76,53 @@ TreeView = {
       }
     }
   },
-  select: {
+  focus: {
     byId: function(id) {
-      Session.set("selected_tree", id)
-      $('.selected').removeClass('selected');
-      $('div[data-id=' + id + ']').addClass('selected');
+      Session.set("focused_tree", id)
+      $('.focused').removeClass('focused');
+      $('div[data-id=' + id + ']').addClass('focused');
     },
     nextSibling: function() {
       $next = TreeView.find.nextSibling(true);
-      $first = TreeView.find.firstSibling(true);
+      $first = TreeView.find.firstSibling();
 
-      if ($next === undefined && ($first === undefined || $first === Session.get("selected_tree"))) {
-        TreeView.select.byId(TreeView.find.firstChild(true));
+      if ($next === undefined && ($first.data('id') === undefined || $first.hasClass("focused"))) {
+        TreeView.focus.byId(TreeView.find.firstChild(true));
       } else if ($next !== undefined) {
-        TreeView.select.byId($next);
+        TreeView.focus.byId($next);
       } else {
-        TreeView.select.byId($first);
+        TreeView.focus.byId($first.data('id'));
       }
     },
     prevSibling: function() {
       $prev = TreeView.find.prevSibling(true);
-      $last = TreeView.find.lastSibling(true);
+      $last = TreeView.find.lastSibling();
 
-      if ($prev === undefined && ($last === undefined || $last === Session.get("selected_tree"))) {
-        TreeView.select.byId(TreeView.find.parent(true));
+      if ($prev === undefined && ($last.data('id') === undefined || $last.hasClass("focused"))) {
+        TreeView.focus.byId(TreeView.find.parent(true));
       } else if ($prev !== undefined) {
-        TreeView.select.byId($prev);
+        TreeView.focus.byId($prev);
       } else {
-        TreeView.select.byId($last);
+        TreeView.focus.byId($last.data('id'));
       }
     },
     parent: function() {
       $parent = TreeView.find.parent(true);
       if ($parent !== undefined) {
-        TreeView.select.byId($parent);
+        TreeView.focus.byId($parent);
       }
     },
     children: function() {
       $child = TreeView.find.firstChild(true);
       if ($child !== undefined) {
-        TreeView.select.byId($child);
+        TreeView.focus.byId($child);
       }
     }
   },
 }
 
-Tracker.autorun(function() {
-  if (Session.get("selected_tree") !== undefined) {
-    TreeView.select.byId(Session.get("selected_tree"));
-  }
-});
+//Tracker.autorun(function() {
+//  if (Session.get("focused_tree") !== undefined) {
+//    TreeView.focus.byId(Session.get("focused_tree"));
+//  }
+//});

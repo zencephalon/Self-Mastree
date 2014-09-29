@@ -8,6 +8,6 @@ Template.root.root = function() {
 
 Template.root.rendered = function() {
   setTimeout(function() {
-    TreeView.select.byId(Template.root.root()._id);
+    TreeView.focus.byId(Template.root.root()._id);
   }, 400);
 }
