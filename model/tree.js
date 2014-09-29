@@ -62,7 +62,7 @@ Tree.hourKey = function(date) {
 }
 
 Tree.prototype.archive = function() {
-  this.update({"$set": {archive: true}});
+  this.update({"$set": {archived: true}});
 }
 
 Tree.prototype.focus = function() {
@@ -101,7 +101,9 @@ Tree.prototype.incCount = function(own, amount) {
 }
 
 Tree.prototype.kids = function() {
-  return _.map(this.children, function(o) {return Tree.findOne(o)});
+  return _.reject(_.map(this.children,
+                        function(o) {return Tree.findOne(o)}
+                       ), function(tree) { return tree.archived });
 }
 
 Tree.prototype.createChild = function(o) {
