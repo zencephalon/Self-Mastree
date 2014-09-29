@@ -142,9 +142,3 @@ TreeView = {
     }
   },
 }
-
-//Tracker.autorun(function() {
-//  if (Session.get("focused_tree") !== undefined) {
-//    TreeView.focus.byId(Session.get("focused_tree"));
-//  }
-//});
