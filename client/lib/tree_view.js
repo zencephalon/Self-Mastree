@@ -78,9 +78,11 @@ TreeView = {
   },
   focus: {
     byId: function(id) {
-      Session.set("focused_tree", id)
-      $('.focused').removeClass('focused');
-      $('div[data-id=' + id + ']').addClass('focused');
+      tree = Tree.findOne(id);
+      tree.focus();
+     // Session.set("focused_tree", id)
+     // $('.focused').removeClass('focused');
+     // $('div[data-id=' + id + ']').addClass('focused');
     },
     nextSibling: function() {
       $next = TreeView.find.nextSibling(true);

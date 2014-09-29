@@ -26,3 +26,11 @@ Template.tree.folded_class = function (tree) {
     return false;
   }
 }
+
+Template.tree.focused_class = function (tree) {
+  c = "tree";
+  if (tree.focused) {
+    c += " focused";
+  }
+  return c;
+}

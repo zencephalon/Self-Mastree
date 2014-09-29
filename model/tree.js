@@ -25,7 +25,7 @@ Tree.create = function(o) {
 }
 
 Tree.focused = function(raw) {
-  tree = Trees.findOne({focus: true})
+  tree = Trees.findOne({focused: true})
   if (raw === undefined) {
     return new Tree(tree);
   } else {
@@ -63,6 +63,12 @@ Tree.hourKey = function(date) {
 
 Tree.prototype.archive = function() {
   this.update({"$set": {archive: true}});
+}
+
+Tree.prototype.focus = function() {
+  focused = Tree.focused();
+  focused.update({"$set": {focused: false}});
+  this.update({"$set": {focused: true}});
 }
 
 Tree.prototype.getParent = function() {
