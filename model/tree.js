@@ -117,6 +117,13 @@ Tree.prototype.remove = function() {
   parent.removeChild(this._id);
 }
 
+Tree.prototype.unfoldUp = function () {
+  this.update({"$set": {folded: false}});
+  if (this.parent) {
+    parent = Tree.findOne(this.parent);
+    parent.unfoldUp();
+  }
+}
 
 Tree.prototype.toggleFold = function () {
   this.update({"$set": {folded: !this.folded}});

@@ -12,6 +12,7 @@ Template.quickswitcher.settings = function() {
       callback: function(doc, element) {
         tree = Tree.findOneByTitle($('#switcher').val());
         TreeView.select.byId(tree._id);
+        tree.unfoldUp();
         $('#quickswitcher').hide();
       }
     }]
