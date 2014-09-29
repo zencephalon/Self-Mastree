@@ -3,21 +3,26 @@ Template.rename_form.settings = function() {
     position: "bottom",
     limit: 5,
     rules: [{
-      token: ':',
-      replacement: '',
-      end_token: '',
+      token: '@',
+      replacement: '@',
+      end_token: ' ',
       collection: Trees,
-      field: "title",
+      filter: {attr: {"$exists": true}},
+      field: "attr",
       template: Template.qs_tree_display,
       callback: function(doc, element) {
-        var tree = Tree.findOneByTitle($('#switcher').val());
-        tree.focus();
-        tree.unfoldUp();
-        $('#quickswitcher').hide();
       }
+    }, {
+      token: '#',
+      replacement: '#',
+      end_token: ' ',
+      collection: Trees,
+      filter: {hash: {"$exists": true}},
+      field: "hash",
+      template: Template.qs_tree_display,
+      callback: function(doc, element) {}
     }]
   }
-
 }
 
 Template.rename_form.initial_value = function () {

@@ -13,6 +13,14 @@ Tree.create = function(o) {
   if (o['folded'] === undefined) {
     o['folded'] = false;
   }
+  if (o['title']) {
+    if (o['title'].slice(0, 1) == '@') {
+      o['attr'] = o['title'].slice(1, -1);
+    }
+    if (o['title'].slice(0, 1) == '#') {
+      o['hash'] = o['title'].slice(1, -1);
+    }
+  }
   o['archived'] = false;
   o['focused'] = false;
   o['count'] = 0;
