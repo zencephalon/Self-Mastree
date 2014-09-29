@@ -38,6 +38,16 @@ footer { font-size: 0.7em; margin-top: 2em;}
   color: #39BC3C;
 }
 
+#focus {
+  float: left;
+  margin-top: 0.5em;
+  padding-left: 1em;
+}
+
+#root {
+  float: left;
+}
+
 a {
     color: #36AECC;
     text-decoration: none;
