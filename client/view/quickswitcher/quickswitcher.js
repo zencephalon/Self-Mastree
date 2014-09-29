@@ -10,8 +10,8 @@ Template.quickswitcher.settings = function() {
       field: "title",
       template: Template.qs_tree_display,
       callback: function(doc, element) {
-        tree = Tree.findOneByTitle($('#switcher').val());
-        TreeView.focus.byId(tree._id);
+        var tree = Tree.findOneByTitle($('#switcher').val());
+        tree.focus();
         tree.unfoldUp();
         $('#quickswitcher').hide();
       }

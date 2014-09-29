@@ -38,7 +38,7 @@ Tree.findOne = function(o) {
 }
 
 Tree.findOneByTitle = function(title) {
-  return new Tree(Trees.findOne({title: title}))
+  return new Tree(Trees.findOne({title: title}));
 }
 
 Tree.yearKey = function (date) {
@@ -66,7 +66,7 @@ Tree.prototype.archive = function() {
 }
 
 Tree.prototype.focus = function() {
-  focused = Tree.focused();
+  var focused = Tree.focused();
   focused.update({"$set": {focused: false}});
   this.update({"$set": {focused: true}});
 }
