@@ -26,6 +26,9 @@ Mousetrap.bind('ctrl+n', function() {
 Mousetrap.bind('ctrl+x', function() {
   TreeView.removeSelected();
 });
+Mousetrap.bind('ctrl+r', function() {
+  TreeView.insertRenameForm();
+});
 Mousetrap.bind('enter', function() {
   tree = Tree.findOne(Session.get("selected_tree"));
   tree.toggleFold();
