@@ -7,7 +7,4 @@ Template.root.root = function() {
 }
 
 Template.root.rendered = function() {
-  setTimeout(function() {
-    TreeView.focus.byId(Template.root.root()._id);
-  }, 400);
 }
