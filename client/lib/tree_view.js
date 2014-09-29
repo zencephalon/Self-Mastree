@@ -13,6 +13,12 @@ TreeView = {
     Blaze.render(Template.rename_form, $('#focus-title')[0]);
     $('#rename-form > input').focus();
   },
+  updateChildrenFromDOM: function() {
+    parent = TreeView.find.parent();
+    tree = Tree.findOne(parent.data('id'));
+    children = _.map(parent.find('ul').eq(0).children('div'), function(tree) { return tree.getAttribute('data-id') });
+    tree.update({"$set":{children: children}});
+  },
   move: {
     nextSibling: function() {
       $next = TreeView.find.nextSibling();
@@ -23,8 +29,7 @@ TreeView = {
       } else {
         $('.focused').parent().prepend($('.focused'));
       }
-
-      // update parent from dom
+      TreeView.updateChildrenFromDOM();
     },
     prevSibling: function() {
       $prev = TreeView.find.prevSibling();
@@ -35,6 +40,7 @@ TreeView = {
       } else {
         $('.focused').parent().append($('.focused'));
       }
+      TreeView.updateChildrenFromDOM();
     }
   },
   find: {
