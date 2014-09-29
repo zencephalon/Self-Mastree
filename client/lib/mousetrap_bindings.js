@@ -1,6 +1,9 @@
 Mousetrap.bind('down', function() {
   TreeView.focus.nextSibling();
 });
+Mousetrap.bind('shift+down', function() {
+  TreeView.move.nextSibling();
+});
 Mousetrap.bind('up', function() {
   TreeView.focus.prevSibling();
 });
