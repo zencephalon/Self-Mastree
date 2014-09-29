@@ -30,7 +30,7 @@ TreeView = {
       $prev = TreeView.find.prevSibling();
       $last = TreeView.find.lastSibling();
 
-      if ($prev !== undefined) {
+      if ($prev.data('id') !== undefined) {
         $prev.before($('.focused'));
       } else {
         $('.focused').parent().append($('.focused'));
