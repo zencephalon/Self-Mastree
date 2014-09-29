@@ -102,8 +102,7 @@ TreeView = {
   },
   focus: {
     byId: function(id) {
-      var tree = Tree.findOne(id);
-      tree.focus();
+      Tree.findOne(id).focus();
     },
     nextSibling: function() {
       $next = TreeView.find.nextSibling(true);
