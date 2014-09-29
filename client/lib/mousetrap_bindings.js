@@ -32,7 +32,7 @@ Mousetrap.bind('ctrl+n', function() {
 Mousetrap.bind('ctrl+x', function() {
   TreeView.removeFocused();
 });
-Mousetrap.bind('ctrl+r', function() {
+Mousetrap.bind('ctrl+e', function() {
   TreeView.insertRenameForm();
 });
 Mousetrap.bind('enter', function() {
