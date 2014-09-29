@@ -117,13 +117,13 @@ TreeView = {
       }
     },
     prevSibling: function() {
-      $prev = TreeView.find.prevSibling(true);
+      prev = TreeView.find.prevSibling(true);
       $last = TreeView.find.lastSibling();
 
-      if ($prev === undefined && ($last.data('id') === undefined || $last.hasClass("focused"))) {
+      if (prev === undefined && ($last.data('id') === undefined || $last.hasClass("focused"))) {
         TreeView.focus.byId(TreeView.find.parent(true));
-      } else if ($prev !== undefined) {
-        TreeView.focus.byId($prev);
+      } else if (prev !== undefined) {
+        TreeView.focus.byId(prev);
       } else {
         TreeView.focus.byId($last.data('id'));
       }
