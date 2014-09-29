@@ -18,3 +18,11 @@ Template.tree.today_count = function(tree) {
     return "+0"
   }
 }
+
+Template.tree.folded_class = function (tree) {
+  if (tree.folded) {
+    return "folded";
+  } else {
+    return false;
+  }
+}
