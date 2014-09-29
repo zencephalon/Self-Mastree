@@ -22,6 +22,15 @@ Tree.create = function(o) {
   return new Tree(o);
 }
 
+Tree.focused = function(raw) {
+  tree = Trees.findOne({focus: true})
+  if (raw === undefined) {
+    return new Tree(tree);
+  } else {
+    return tree;
+  }
+}
+
 Tree.findOne = function(o) {
   return new Tree(Trees.findOne(o));
 }

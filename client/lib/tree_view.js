@@ -2,6 +2,7 @@ TreeView = {
   removeSelected: function() {
     nearest = TreeView.find.nearest();
     Tree.findOne(Session.get("selected_tree")).remove();
+    Tree.focused().archive();
     TreeView.select.byId(nearest);
   },
   insertCreateForm: function() {
