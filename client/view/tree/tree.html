@@ -1,6 +1,6 @@
 <template name="tree">
 <div class="tree" data-id="{{_id}}">
-  <p>{{title}}: {{today_count this}} ({{total_count}}) {{#if folded}}[+]{{/if}}</p>
+  <p>{{title}}: <span class="grey">{{total_count}} ({{{today_count this}}}) {{#if folded}}[+]{{/if}}</span></p>
   <ul>
   {{#unless folded}}
     {{#each kids}}

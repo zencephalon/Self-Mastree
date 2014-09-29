@@ -30,6 +30,14 @@ footer { font-size: 0.7em; margin-top: 2em;}
 
 #content { margin: 0 auto; padding: 0 1em; position: relative; }
 
+.grey {
+  color: #AAA;
+}
+
+.green {
+  color: #39BC3C;
+}
+
 a {
     color: #36AECC;
     text-decoration: none;
@@ -42,22 +50,6 @@ a:visited {
 a:hover {
     color: #000;
     text-decoration: underline;
-}
-
-code {
-    font-family: Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    border-radius: 1px;
-    -moz-background-clip: padding;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    padding: 0px 3px;
-    display: inline-block;
-    color: #52595d;
-    background-color: #E8F2F5;
-    font-size: 40%;
-    line-height: 1.4em;
 }
 
 div.selected > p {

@@ -13,8 +13,8 @@ Template.tree.today_count = function(tree) {
   month_day = date.getDate();
   week_day = date.getDay();
   try {
-    return tree['date'][year][month][month_day][week_day]['count'];
+    return "<span class='green'>+" + tree['date'][year][month][month_day][week_day]['count'] + "</span>";
   } catch(e) {
-    return 0;
+    return "+0"
   }
 }
