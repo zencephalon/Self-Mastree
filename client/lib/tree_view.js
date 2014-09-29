@@ -11,6 +11,7 @@ TreeView = {
   insertRenameForm: function() {
     $('#focus-title').html("");
     Blaze.render(Template.rename_form, $('#focus-title')[0]);
+    $('#rename-form > input').focus();
   },
   find: {
     nextSibling: function(id) {
