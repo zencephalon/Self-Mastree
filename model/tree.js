@@ -13,8 +13,8 @@ Tree.create = function(o) {
   if (o['folded'] === undefined) {
     o['folded'] = false;
   }
-  o['archive'] = false;
-  o['focus'] = false;
+  o['archived'] = false;
+  o['focused'] = false;
   o['count'] = 0;
   o['total_count'] = 0;
 
