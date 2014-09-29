@@ -13,6 +13,8 @@ Tree.create = function(o) {
   if (o['folded'] === undefined) {
     o['folded'] = false;
   }
+  o['archive'] = false;
+  o['focus'] = false;
   o['count'] = 0;
   o['total_count'] = 0;
 
@@ -57,6 +59,10 @@ Tree.weekDayKey = function(date) {
 
 Tree.hourKey = function(date) {
   return Tree.weekDayKey(date) + "." + date.getHours();
+}
+
+Tree.prototype.archive = function() {
+  this.update({"$set": {archive: true}});
 }
 
 Tree.prototype.getParent = function() {
