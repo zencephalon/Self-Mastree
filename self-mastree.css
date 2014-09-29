@@ -190,4 +190,5 @@ textarea.saved:focus {
   font-family: Georgia; line-height:100%; color: #36AECC; font-weight: 400;
   height: 1.1em;
   width: 100%;
+  max-width: 7em;
 }
