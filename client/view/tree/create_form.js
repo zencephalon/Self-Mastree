@@ -7,20 +7,11 @@ Template.create_form.settings = function() {
       replacement: '@',
       end_token: ' ',
       collection: Trees,
-      filter: {attr: {"$exists": true}},
-      field: "attr",
+      filter: {archived: {"$ne": true}},
+      field: "ref",
       template: Template.qs_tree_display,
       callback: function(doc, element) {
       }
-    }, {
-      token: '#',
-      replacement: '#',
-      end_token: ' ',
-      collection: Trees,
-      filter: {hash: {"$exists": true}},
-      field: "hash",
-      template: Template.qs_tree_display,
-      callback: function(doc, element) {}
     }]
   }
 };
