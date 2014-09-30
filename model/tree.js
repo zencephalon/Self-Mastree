@@ -165,13 +165,15 @@ Tree.prototype.displayTitle = function() {
   return this.title.slice(0, index).trim();
 }
 
-Tree.prototype.updateTitle = function(title) {
+Tree.prototype.updateTitle = function(title, update) {
   attrs = title.match(/\@\w+/g) || [];
   hashes = title.match(/\#\w+/g) || [];
   this.title = title;
   attrs = _.map(attrs, function(attr_title) { return Trees.findOne({title: attr_title})._id });
   hashes = _.map(hashes, function(hash_title) { return Trees.findOne({title: hash_title})._id });
   this.links = attrs.concat(hashes);
-  this.update();
+  if (update) {
+    this.update();
+  }
 }
 
