@@ -1,7 +1,6 @@
 Template.tree.events({
   'click': function (event) {
     event.stopPropagation();
-    //this.incCount(true);
     TreeView.focus.byId(this._id);
   }
 });
