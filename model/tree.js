@@ -171,12 +171,18 @@ Tree.prototype.toggleFold = function () {
 
 Tree.cleanTitle = function(title) {
   index = title.search(/\@|\#/);
-  return title.slice(0, index).trim();
+  if (index == -1) {
+    return title.trim();
+  } else {
+    return title.slice(0, index).trim();
+  }
 }
 
 Tree.extractLinks = function(title) {
   links = title.match(/\@\w+/g) || [];
-  return _.map(attrs, function(link_title) { return Trees.findOne({title: link_title})._id });
+  links = _.map(links, function(link_ref) { return link_ref.slice(1) });
+  console.log(links);
+  return _.map(links, function(link_ref) { return Trees.findOne({ref: link_ref})._id });
 }
 
 Tree.prototype.updateTitle = function(title, update) {
