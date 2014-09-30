@@ -22,7 +22,7 @@ Template.rename_form.initial_value = function () {
 }
 
 Template.rename_form.events({
-  'submit': function() {
+  'submit': function(event) {
     tree = Tree.focused();
     // TODO: refactor to use event.target
     tree.updateText($('#rename-form > input').val(), true);

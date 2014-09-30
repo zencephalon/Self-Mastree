@@ -175,13 +175,13 @@ Tree.extractRef = function(text) {
   if (index == -1) {
     return text.trim();
   } else {
-    return text(0, index).trim();
+    return text.slice(0, index).trim();
   }
 }
 
 Tree.extractLinks = function(text) {
-  links = text.match(/\@\(\.+\)/g) || [];
-  links = _.map(links, function(link_ref) { return link_ref.slice(1) });
+  links = text.match(/\@\(.+\)/g) || [];
+  links = _.map(links, function(link_ref) { return link_ref.slice(2, -1) });
   console.log(links);
   return _.map(links, function(link_ref) { return Trees.findOne({ref: link_ref})._id });
 }
