@@ -171,7 +171,7 @@ Tree.prototype.toggleFold = function () {
 }
 
 Tree.cleanTitle = function(title) {
-  index = title.search(/\@|\#/);
+  index = title.search(/\@/);
   if (index == -1) {
     return title.trim();
   } else {
@@ -180,7 +180,7 @@ Tree.cleanTitle = function(title) {
 }
 
 Tree.extractLinks = function(title) {
-  links = title.match(/\@\w+/g) || [];
+  links = title.match(/\@\(\.+\)/g) || [];
   links = _.map(links, function(link_ref) { return link_ref.slice(1) });
   console.log(links);
   return _.map(links, function(link_ref) { return Trees.findOne({ref: link_ref})._id });
