@@ -27,7 +27,12 @@ Mousetrap.bind('shift+space', function() {
   return false;
 });
 Mousetrap.bind('ctrl+n', function() {
-  TreeView.insertCreateForm();
+  $form = $('#create_form');
+  if ($form.length == 0) {
+    TreeView.insertCreateForm();
+  } else {
+    $('#create_form input').blur();
+  }
 });
 Mousetrap.bind('ctrl+x', function() {
   TreeView.removeFocused();

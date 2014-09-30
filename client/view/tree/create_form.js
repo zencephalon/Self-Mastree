@@ -25,7 +25,7 @@ Template.create_form.events({
     parent.createChild({text: $input.val() });
     $('#create_form').remove();
   },
-  'blur': function () {
+  'blur input': function () {
     $('#create_form').remove();
   }
 });
