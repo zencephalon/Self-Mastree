@@ -24,5 +24,8 @@ Template.create_form.events({
     $input = $('input[name="tree_text"]');
     parent.createChild({text: $input.val() });
     $('#create_form').remove();
+  },
+  'blur': function () {
+    $('#create_form').remove();
   }
 });
