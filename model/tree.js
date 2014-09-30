@@ -159,3 +159,8 @@ Tree.prototype.unfoldUp = function () {
 Tree.prototype.toggleFold = function () {
   this.update({"$set": {folded: !this.folded}});
 }
+
+Tree.prototype.displayTitle = function() {
+  index = this.title.search(/\@|\#/);
+  return this.title.slice(0, index).trim();
+}
