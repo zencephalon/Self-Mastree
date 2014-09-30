@@ -21,8 +21,8 @@ Template.create_form.events({
     event.preventDefault();
     event.stopPropagation();
     parent = Tree.focused();
-    $input = $('input[name="tree_title"]');
-    parent.createChild({title: $input.val() });
+    $input = $('input[name="tree_text"]');
+    parent.createChild({text: $input.val() });
     $('#create_form').remove();
   }
 });

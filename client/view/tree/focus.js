@@ -1,4 +1,4 @@
-Template.focus.title = function () {
+Template.focus.text = function () {
   tree = Tree.focused();
-  return tree.title;
+  return tree.text;
 }

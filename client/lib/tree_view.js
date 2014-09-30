@@ -6,11 +6,11 @@ TreeView = {
   },
   insertCreateForm: function() {
     Blaze.render(Template.create_form, $('.focused > ul')[0]);
-    $('input[name="tree_title"]').focus();
+    $('input[name="tree_text"]').focus();
   },
   insertRenameForm: function() {
-    $('#focus-title').html("");
-    Blaze.render(Template.rename_form, $('#focus-title')[0]);
+    $('#focus-text').html("");
+    Blaze.render(Template.rename_form, $('#focus-text')[0]);
     $('#rename-form > input').focus();
   },
   updateChildrenFromDOM: function() {

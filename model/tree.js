@@ -22,10 +22,10 @@ Tree.create = function(o) {
   o['count'] = 0;
   o['total_count'] = 0;
 
-  if (o['title']) {
-    o['title'] = o['title'].trim();
-    o['ref'] = Tree.cleanTitle(o['title']);
-    o['links'] = Tree.extractLinks(o['title']);
+  if (o['text']) {
+    o['text'] = o['text'].trim();
+    o['ref'] = Tree.extractRef(o['text']);
+    o['links'] = Tree.extractLinks(o['text']);
   }
 
   id = Trees.insert(o);
@@ -47,8 +47,8 @@ Tree.findOne = function(o) {
   return new Tree(Trees.findOne(o));
 }
 
-Tree.findOneByTitle = function(title) {
-  return new Tree(Trees.findOne({title: title}));
+Tree.findOneByText = function(text) {
+  return new Tree(Trees.findOne({text: text}));
 }
 
 Tree.findOneByRef = function(ref) {
@@ -170,26 +170,26 @@ Tree.prototype.toggleFold = function () {
   this.update({"$set": {folded: !this.folded}});
 }
 
-Tree.cleanTitle = function(title) {
-  index = title.search(/\@/);
+Tree.extractRef = function(text) {
+  index = text.search(/\@/);
   if (index == -1) {
-    return title.trim();
+    return text.trim();
   } else {
-    return title.slice(0, index).trim();
+    return text(0, index).trim();
   }
 }
 
-Tree.extractLinks = function(title) {
-  links = title.match(/\@\(\.+\)/g) || [];
+Tree.extractLinks = function(text) {
+  links = text.match(/\@\(\.+\)/g) || [];
   links = _.map(links, function(link_ref) { return link_ref.slice(1) });
   console.log(links);
   return _.map(links, function(link_ref) { return Trees.findOne({ref: link_ref})._id });
 }
 
-Tree.prototype.updateTitle = function(title, update) {
-  this.title = title.trim();
-  this.ref = Tree.cleanTitle(this.title);
-  this.links = Tree.extractLinks(this.title);
+Tree.prototype.updateText = function(text, update) {
+  this.text = text.trim();
+  this.ref = Tree.extractRef(this.text);
+  this.links = Tree.extractLinks(this.text);
   if (update) {
     this.update();
   }
