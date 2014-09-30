@@ -23,6 +23,7 @@ Tree.create = function(o) {
   o['total_count'] = 0;
 
   if (o['title']) {
+    o['title'] = o['title'].trim();
     o['ref'] = Tree.cleanTitle(o['title']);
     o['links'] = Tree.extractLinks(o['title']);
   }
@@ -186,9 +187,9 @@ Tree.extractLinks = function(title) {
 }
 
 Tree.prototype.updateTitle = function(title, update) {
-  this.title = title;
-  this.ref = Tree.cleanTitle(title);
-  this.links = Tree.extractLinks(title);
+  this.title = title.trim();
+  this.ref = Tree.cleanTitle(this.title);
+  this.links = Tree.extractLinks(this.title);
   if (update) {
     this.update();
   }
