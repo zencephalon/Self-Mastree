@@ -127,7 +127,6 @@ Tree.prototype.createChild = function(o) {
   o['parent'] = this._id;
   o['uid'] = this.uid;
   child = Tree.create(o);
-  console.log(child);
   this.children.push(child._id);
   this.update();
   return child;
@@ -182,7 +181,6 @@ Tree.extractRef = function(text) {
 Tree.extractLinks = function(text) {
   links = text.match(/\@\(.+\)/g) || [];
   links = _.map(links, function(link_ref) { return link_ref.slice(2, -1) });
-  console.log(links);
   return _.map(links, function(link_ref) { return Trees.findOne({ref: link_ref})._id });
 }
 
