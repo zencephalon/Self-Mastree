@@ -33,7 +33,7 @@ Template.rename_form.initial_value = function () {
 Template.rename_form.events({
   'submit': function() {
     tree = Tree.focused();
-    tree.update({"$set": {title: $('#rename-form > input').val()}});
+    tree.updateTitle($('#rename-form > input').val());
     $('#rename-form').remove();
     return false;
   }
