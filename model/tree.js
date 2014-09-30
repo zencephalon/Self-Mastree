@@ -16,23 +16,20 @@ Tree.create = function(o) {
   if (o['links'] === undefined) {
     o['links'] = [];
   }
-  if (o['title']) {
-    if (o['title'].slice(0, 1) == '@') {
-      o['attr'] = o['title'].slice(1, -1);
-    }
-    if (o['title'].slice(0, 1) == '#') {
-      o['hash'] = o['title'].slice(1, -1);
-    }
-    this.updateTitle(o['title']);
-  }
+
   o['archived'] = false;
   o['focused'] = false;
   o['count'] = 0;
   o['total_count'] = 0;
 
-  id = Trees.insert(o);
+  if (o['title']) {
+    o['ref'] = Tree.cleanTitle(o['title']);
+    o['links'] = Tree.extractLinks(o['title']);
+  }
 
+  id = Trees.insert(o);
   o['_id'] = id;
+
   return new Tree(o);
 }
 
@@ -51,6 +48,10 @@ Tree.findOne = function(o) {
 
 Tree.findOneByTitle = function(title) {
   return new Tree(Trees.findOne({title: title}));
+}
+
+Tree.findOneByRef = function(ref) {
+  return new Tree(Trees.findOne({ref: ref}));
 }
 
 Tree.yearKey = function (date) {
@@ -110,6 +111,9 @@ Tree.prototype.incCount = function(own, amount) {
   if (this.parent !== undefined)  {
     this.getParent().incCount(false, amount);
   }
+  if (this.links) {
+    this.links.forEach(function (link) { Tree.findOne(link).incCount(false, amount) });
+  }
 }
 
 Tree.prototype.kids = function() {
@@ -122,6 +126,7 @@ Tree.prototype.createChild = function(o) {
   o['parent'] = this._id;
   o['uid'] = this.uid;
   child = Tree.create(o);
+  console.log(child);
   this.children.push(child._id);
   this.update();
   return child;
@@ -164,18 +169,20 @@ Tree.prototype.toggleFold = function () {
   this.update({"$set": {folded: !this.folded}});
 }
 
-Tree.prototype.displayTitle = function() {
-  index = this.title.search(/\@|\#/);
-  return this.title.slice(0, index).trim();
+Tree.cleanTitle = function(title) {
+  index = title.search(/\@|\#/);
+  return title.slice(0, index).trim();
+}
+
+Tree.extractLinks = function(title) {
+  links = title.match(/\@\w+/g) || [];
+  return _.map(attrs, function(link_title) { return Trees.findOne({title: link_title})._id });
 }
 
 Tree.prototype.updateTitle = function(title, update) {
-  attrs = title.match(/\@\w+/g) || [];
-  hashes = title.match(/\#\w+/g) || [];
   this.title = title;
-  attrs = _.map(attrs, function(attr_title) { return Trees.findOne({title: attr_title})._id });
-  hashes = _.map(hashes, function(hash_title) { return Trees.findOne({title: hash_title})._id });
-  this.links = attrs.concat(hashes);
+  this.ref = Tree.cleanTitle(title);
+  this.links = Tree.extractLinks(title);
   if (update) {
     this.update();
   }
