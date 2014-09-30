@@ -4,8 +4,8 @@ Template.create_form.settings = function() {
     limit: 5,
     rules: [{
       token: '@',
-      replacement: '@',
-      end_token: ' ',
+      replacement: '@(',
+      end_token: ')',
       collection: Trees,
       filter: {archived: {"$ne": true}},
       field: "ref",
