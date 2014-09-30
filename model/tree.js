@@ -164,3 +164,14 @@ Tree.prototype.displayTitle = function() {
   index = this.title.search(/\@|\#/);
   return this.title.slice(0, index).trim();
 }
+
+Tree.prototype.updateTitle = function(title) {
+  attrs = title.match(/\@\w+/g) || [];
+  hashes = title.match(/\#\w+/g) || [];
+  this.title = title;
+  attrs = _.map(attrs, function(attr_title) { return Trees.findOne({title: attr_title}) });
+  hashes = _.map(hashes, function(hash_title) { return Trees.findOne({title: hash_title}) });
+  this.links = attrs.concat(hashes);
+  this.update();
+}
+
