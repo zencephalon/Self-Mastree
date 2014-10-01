@@ -2,7 +2,7 @@
   <form id="rename-form">
     Text: {{> inputAutocomplete settings=settings id="focus-edit-text" value=initial_value name="text"}}
     <br>
-    Parent: {{> inputAutocomplete settings=settings value=parent_value name="parent"}}
+    Parent: {{> inputAutocomplete settings=settings id="focus-edit-parent" value=parent_value name="parent"}}
     <input type="submit" style="display:none">
   </form>
 </template>

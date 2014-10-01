@@ -109,6 +109,7 @@ TreeView = {
   focus: {
     byId: function(id) {
       Tree.findOne(id).focus();
+      setTimeout(function() {$('#rename-form > input').change();}, 50);
     },
     nextSibling: function() {
       $next = TreeView.find.nextSibling(true);
