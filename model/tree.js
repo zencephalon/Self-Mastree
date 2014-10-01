@@ -179,7 +179,7 @@ Tree.extractRef = function(text) {
 }
 
 Tree.extractLinks = function(text) {
-  links = text.match(/\@\(.+\)/g) || [];
+  links = text.match(/\@\(.+?\)/g) || [];
   links = _.map(links, function(link_ref) { return link_ref.slice(2, -1) });
   return _.map(links, function(link_ref) { return Trees.findOne({ref: link_ref})._id });
 }
