@@ -6,15 +6,35 @@ Template.tree.events({
 });
 
 Template.tree.today_count = function(tree) {
+  count = Template.tree.day_count(tree, new Date());
+  if (count != 0) {
+    return "<span class='green'>+" + count + "</span>";
+  } else {
+    return "+0"
+  }
+}
+
+Template.tree.total_yesterday_today = function(tree) {
+  yesterday_count = Template.tree.yesterday_count(tree);
+  return (tree.total_count - yesterday_count) + "+" + yesterday_count;
+}
+
+Template.tree.yesterday_count = function(tree) {
   date = new Date();
+  date.setDate(date.getDate() - 1);
+  count = Template.tree.day_count(tree, date);
+  return count;
+}
+
+Template.tree.day_count = function(tree, date) {
   year = date.getFullYear();
   month = date.getMonth();
   month_day = date.getDate();
   week_day = date.getDay();
   try {
-    return "<span class='green'>+" + tree['date'][year][month][month_day][week_day]['count'] + "</span>";
+    return tree['date'][year][month][month_day][week_day]['count'];
   } catch(e) {
-    return "+0"
+    return 0
   }
 }
 
