@@ -37,7 +37,7 @@ Mousetrap.bind('ctrl+n', function() {
 Mousetrap.bind('ctrl+x', function() {
   TreeView.removeFocused();
 });
-Mousetrap.bind('ctrl+e', function() {
+Mousetrap.bind('ctrl+s', function() {
   $('#focus-edit-text').focus();
 });
 Mousetrap.bind('enter', function() {
