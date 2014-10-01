@@ -1,7 +1,8 @@
 <template name="rename_form">
   <form id="rename-form">
-    {{> inputAutocomplete settings=settings value=initial_value name="text"}}
-    {{> inputAutocomplete settings=settings value=parent_value name="parent"}}
-    <input type="submit" display="none">
+    Text: {{> inputAutocomplete settings=settings value=initial_value name="text"}}
+    <br>
+    Parent: {{> inputAutocomplete settings=settings value=parent_value name="parent"}}
+    <input type="submit" style="display:none">
   </form>
 </template>
