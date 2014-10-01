@@ -29,6 +29,7 @@ Template.rename_form.parent_value = function() {
 
 Template.rename_form.rendered = function() {
   $('#rename-form').children('input').autosizeInput();
+  setTimeout(function() {$('#rename-form').children('input').change()}, 500);
 }
 
 Template.rename_form.events({
