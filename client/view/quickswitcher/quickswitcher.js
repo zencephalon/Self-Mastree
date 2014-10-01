@@ -8,6 +8,7 @@ Template.quickswitcher.settings = function() {
       end_token: '',
       collection: Trees,
       field: "ref",
+      matchAll: true,
       template: Template.qs_tree_display,
       callback: function(doc, element) {
         var tree = Tree.findOne(doc._id);
