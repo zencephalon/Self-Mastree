@@ -9,6 +9,7 @@ Template.rename_form.settings = function() {
       collection: Trees,
       filter: {archived: {"$ne": true}},
       field: "ref",
+      matchAll: true,
       template: Template.qs_tree_display,
       callback: function(doc, element) {
       }
