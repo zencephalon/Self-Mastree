@@ -40,6 +40,8 @@ footer { font-size: 0.7em; margin-top: 2em;}
 
 #focus {
   float: left;
+  font-size: 1.33em;
+  line-height: 1.2em;
   margin-top: 0.5em;
   padding-left: 1em;
 }
@@ -70,12 +72,17 @@ div.focused > p {
   color: #36AECC;
 }
 
+#focus-edit-text {
+  width: 17em;
+}
+
 input {
-  border: none
+  font-family: Vollkorn;
+  font-size: 1em;
 }
 
 input:hover {
-  outline: 1px solid #000;
+  outline: 1px solid #36AECC;
 }
 
 input:focus {

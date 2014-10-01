@@ -1,6 +1,6 @@
 <template name="rename_form">
   <form id="rename-form">
-    Text: {{> inputAutocomplete settings=settings value=initial_value name="text"}}
+    Text: {{> inputAutocomplete settings=settings id="focus-edit-text" value=initial_value name="text"}}
     <br>
     Parent: {{> inputAutocomplete settings=settings value=parent_value name="parent"}}
     <input type="submit" style="display:none">
