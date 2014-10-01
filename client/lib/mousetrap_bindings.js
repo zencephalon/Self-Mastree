@@ -38,7 +38,7 @@ Mousetrap.bind('ctrl+x', function() {
   TreeView.removeFocused();
 });
 Mousetrap.bind('ctrl+e', function() {
-  TreeView.insertRenameForm();
+  $('#focus-edit-text').focus();
 });
 Mousetrap.bind('enter', function() {
   tree = Tree.focused();
