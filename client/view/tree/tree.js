@@ -16,7 +16,16 @@ Template.tree.today_count = function(tree) {
 
 Template.tree.total_yesterday_today = function(tree) {
   yesterday_count = Template.tree.yesterday_count(tree);
-  return (tree.total_count - yesterday_count) + "+" + yesterday_count;
+  today_count = Template.tree.day_count(tree, new Date());
+
+  if (today_count > yesterday_count) {
+    start_str = "<span class='green'>(</span>";
+    end_str = ")</span>";
+  } else {
+    start_str = "(";
+    end_str = "</span>)";
+  }
+  return start_str + yesterday_count + "<span class='green'>+" + today_count + end_str;
 }
 
 Template.tree.yesterday_count = function(tree) {
