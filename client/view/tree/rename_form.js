@@ -22,10 +22,17 @@ Template.rename_form.initial_value = function () {
   return tree.text;
 }
 
+Template.rename_form.parent_value = function() {
+  tree = Tree.focused();
+  return "@(" + Tree.findOne(tree.parent).ref + ")";
+}
+
 Template.rename_form.events({
   'submit': function(event) {
+    event.preventDefault();
     tree = Tree.focused();
-    tree.updateText($(event.target).children('input').val(), true);
+    tree.updateText($(event.target).children('input[name=text]').val(), true);
+    tree.updateParent($(event.target).children('input[name=parent]').val());
     $(event.target).remove();
     return false;
   }

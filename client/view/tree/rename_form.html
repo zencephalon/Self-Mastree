@@ -1,5 +1,7 @@
 <template name="rename_form">
   <form id="rename-form">
-    {{> inputAutocomplete settings=settings value=initial_value}}
+    {{> inputAutocomplete settings=settings value=initial_value name="text"}}
+    {{> inputAutocomplete settings=settings value=parent_value name="parent"}}
+    <input type="submit" display="none">
   </form>
 </template>

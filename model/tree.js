@@ -193,3 +193,17 @@ Tree.prototype.updateText = function(text, update) {
   }
 }
 
+Tree.prototype.updateParent = function(parent_ref) {
+  old_parent = Tree.findOne(this.parent);
+  old_parent_children = old_parent.children;
+  index = old_parent_children.indexOf(this._id);
+  old_parent_children.splice(index, 1);
+  old_parent.update({"$set": {children: old_parent_children}});
+
+  parent_id = Tree.extractLinks(parent_ref)[0];
+  new_parent = Tree.findOne(parent_id);
+  new_parent.children.push(this._id);
+  new_parent.update({"$set": {children: new_parent.children}});
+
+  this.update({"$set": {parent: parent_id}});
+}
