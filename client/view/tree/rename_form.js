@@ -38,7 +38,6 @@ Template.rename_form.events({
     tree = Tree.focused();
     tree.updateText($(event.target).find('input[name=text]').val(), true);
     tree.updateParent($(event.target).find('input[name=parent]').val());
-    $(event.target).remove();
     return false;
   }
 })
