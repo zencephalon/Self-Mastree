@@ -202,11 +202,13 @@ Tree.prototype.addLink = function(link) {
 }
 
 Tree.prototype.updateParent = function(parent_id) {
-  old_parent = Tree.findOne(this.parent);
-  old_parent_children = old_parent.children;
-  index = old_parent_children.indexOf(this._id);
-  old_parent_children.splice(index, 1);
-  old_parent.update({"$set": {children: old_parent_children}});
+  if (parent_id != this.parent) {
+    old_parent = Tree.findOne(this.parent);
+    old_parent_children = old_parent.children;
+    index = old_parent_children.indexOf(this._id);
+    old_parent_children.splice(index, 1);
+    old_parent.update({"$set": {children: old_parent_children}});
+  }
 
   new_parent = Tree.findOne(parent_id);
   new_parent.children.push(this._id);
