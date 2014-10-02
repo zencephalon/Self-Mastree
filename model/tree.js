@@ -181,16 +181,24 @@ Tree.extractRef = function(text) {
 Tree.extractLinks = function(text) {
   links = text.match(/\@\(.+?\)/g) || [];
   links = _.map(links, function(link_ref) { return link_ref.slice(2, -1) });
-  return _.map(links, function(link_ref) { return Trees.findOne({ref: link_ref})._id });
+  return _.flatten(_.map(links, function(link_ref) {
+    return _.map(Trees.find({ref: link_ref}).fetch(), function(t) { return t._id });
+  }));
 }
 
 Tree.prototype.updateText = function(text, update) {
   this.text = text.trim();
   this.ref = Tree.extractRef(this.text);
-  this.links = Tree.extractLinks(this.text);
+  links = Tree.extractLinks(this.text);
+  this.links = _.filter(this.links, function(link) { return _.contains(links, link) });
   if (update) {
     this.update();
   }
+}
+
+Tree.prototype.addLink = function(link) {
+  this.links.push(link);
+  this.update({"$set": {links: this.links}});
 }
 
 Tree.prototype.updateParent = function(parent_ref) {

@@ -12,6 +12,8 @@ Template.rename_form.settings = function() {
       matchAll: true,
       template: Template.qs_tree_display,
       callback: function(doc, element) {
+        tree = Tree.focused();
+        tree.addLink(doc._id);
       }
     }]
   }
