@@ -1,4 +1,4 @@
-Template.rename_form.settings = function() {
+Template.rename_form.text_settings = function() {
   return {
     position: "bottom",
     limit: 5,
@@ -14,6 +14,27 @@ Template.rename_form.settings = function() {
       callback: function(doc, element) {
         tree = Tree.focused();
         tree.addLink(doc._id);
+      }
+    }]
+  }
+}
+
+Template.rename_form.parent_settings = function() {
+  return {
+    position: "bottom",
+    limit: 5,
+    rules: [{
+      token: '@',
+      replacement: '@(',
+      end_token: ') ',
+      collection: Trees,
+      filter: {archived: {"$ne": true}},
+      field: "ref",
+      matchAll: true,
+      template: Template.qs_tree_display,
+      callback: function(doc, element) {
+        tree = Tree.focused();
+        tree.update({"$set":{parent: doc._id}});
       }
     }]
   }
