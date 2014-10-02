@@ -34,7 +34,7 @@ Template.rename_form.parent_settings = function() {
       template: Template.qs_tree_display,
       callback: function(doc, element) {
         tree = Tree.focused();
-        tree.update({"$set":{parent: doc._id}});
+        tree.updateParent(doc._id);
       }
     }]
   }
