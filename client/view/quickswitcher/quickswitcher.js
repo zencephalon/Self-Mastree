@@ -9,6 +9,7 @@ Template.quickswitcher.settings = function() {
       collection: Trees,
       field: "ref",
       matchAll: true,
+      filter: {archived: {"$ne": true}},
       template: Template.qs_tree_display,
       callback: function(doc, element) {
         var tree = Tree.findOne(doc._id);
