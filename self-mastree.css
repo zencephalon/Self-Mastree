@@ -116,11 +116,6 @@ textarea.saved:focus {
   height: 2em;
 }
 
-#iron-router-progress {
-  background-color: #36AECC;
-  box-shadow: 0 0 5px #E8F2F5;
-}
-
 .standout {
   color: #36AECC;
 }
@@ -138,7 +133,6 @@ textarea.saved:focus {
   color: #ff0000;
 }
 
-
 .login-link-text {
   color: #E8F2F5;
   float:right;
@@ -146,37 +140,6 @@ textarea.saved:focus {
 
 #login-buttons .login-close-text {
   float: right;
-}
-
-#text-height-helper {
-  border-color:transparent;
-  width: 100%;
-  z-index: -10;
-  font-family: Vollkorn; font-size: 100%; line-height: 130%; 
-  white-space: pre;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-#text-height-helper span {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  color: transparent;
-}
-
-.subview {
-  border-left: 1px solid #AAA;
-  padding-left: .2em;
-  font-size: 0.9em;
-}
-
-.open-link {
-  text-decoration: underline; 
-}
-
-.active {
-  color: #000 !important;
 }
 
 .hidden {
