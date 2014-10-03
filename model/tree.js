@@ -216,3 +216,7 @@ Tree.prototype.updateParent = function(parent_id) {
 
   this.update({"$set": {parent: parent_id}});
 }
+
+Tree.prototype.updateChildren = function(children) {
+  this.update({"$set":{children: children}});
+}

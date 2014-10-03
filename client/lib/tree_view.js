@@ -15,7 +15,7 @@ TreeView = {
       parent.find('ul').eq(0).children('div'),
       function(tree) { return tree.getAttribute('data-id') }
     );
-    tree.update({"$set":{children: children}});
+    tree.updateChildren(children);
   },
   move: {
     nextSibling: function() {
