@@ -1,5 +1,19 @@
 <template name="focus">
-  <div id="focus">
-    {{> rename_form}}
-  </div>
+<div id="focus">
+  <form id="rename-form">
+    <table>
+      <tr>
+        <td>Text</td>
+        <td>{{> inputAutocomplete settings=text_settings id="focus-edit-text" value=initial_value name="text"}}</td>
+      </tr>
+      <tr>
+        <td>Parent</td>
+        <td>{{> inputAutocomplete settings=parent_settings id="focus-edit-parent" value=parent_value name="parent"}}</td>
+      </tr>
+    </table>
+    <br>
+    <input type="submit" style="display:none">
+  </form>
+</div>
 </template>
+
