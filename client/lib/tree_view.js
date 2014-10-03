@@ -44,6 +44,14 @@ TreeView = {
     }
   },
   find: {
+    generic: function(id, f) {
+      $ele = f();
+      if (id) {
+        return $ele.data('id');
+      } else {
+        return $ele;
+      }
+    },
     nextSibling: function(id) {
       $ele = $('.focused').next('div');
       if (id) {
