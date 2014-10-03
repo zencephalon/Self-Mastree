@@ -24,7 +24,7 @@ TreeView = {
       $next = TreeView.find.nextSibling();
       $first = TreeView.find.firstSibling();
 
-      if ($next.data('id') !== undefined) {
+      if ($next.data('id')) {
         $next.after($('.focused'));
       } else {
         $('.focused').parent().prepend($('.focused'));
@@ -35,7 +35,7 @@ TreeView = {
       $prev = TreeView.find.prevSibling();
       $last = TreeView.find.lastSibling();
 
-      if ($prev.data('id') !== undefined) {
+      if ($prev.data('id')) {
         $prev.before($('.focused'));
       } else {
         $('.focused').parent().append($('.focused'));
@@ -131,7 +131,7 @@ TreeView = {
         if (parent = TreeView.find.parent(true)) {
           TreeView.focus.byId(parent);
         }
-      } else if (prev !== undefined) {
+      } else if (prev) {
         TreeView.focus.byId(prev);
       } else {
         TreeView.focus.byId($last.data('id'));
@@ -139,13 +139,13 @@ TreeView = {
     },
     parent: function() {
       $parent = TreeView.find.parent(true);
-      if ($parent !== undefined) {
+      if ($parent) {
         TreeView.focus.byId($parent);
       }
     },
     children: function() {
       $child = TreeView.find.firstChild(true);
-      if ($child !== undefined) {
+      if ($child) {
         TreeView.focus.byId($child);
       }
     }
