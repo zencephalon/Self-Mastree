@@ -11,7 +11,10 @@ TreeView = {
   updateChildrenFromDOM: function() {
     parent = TreeView.find.parent();
     tree = Tree.findOne(parent.data('id'));
-    children = _.map(parent.find('ul').eq(0).children('div'), function(tree) { return tree.getAttribute('data-id') });
+    children = _.map(
+      parent.find('ul').eq(0).children('div'),
+      function(tree) { return tree.getAttribute('data-id') }
+    );
     tree.update({"$set":{children: children}});
   },
   move: {
