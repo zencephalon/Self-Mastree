@@ -8,11 +8,6 @@ TreeView = {
     Blaze.render(Template.create_form, $('.focused > ul')[0]);
     $('input[name="tree_text"]').focus();
   },
-  insertRenameForm: function() {
-    $('#focus-text').html("");
-    Blaze.render(Template.rename_form, $('#focus-text')[0]);
-    $('#rename-form > input').focus();
-  },
   updateChildrenFromDOM: function() {
     parent = TreeView.find.parent();
     tree = Tree.findOne(parent.data('id'));
