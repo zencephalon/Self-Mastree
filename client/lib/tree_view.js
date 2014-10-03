@@ -53,52 +53,34 @@ TreeView = {
       }
     },
     nextSibling: function(id) {
-      $ele = $('.focused').next('div');
-      if (id) {
-        return $ele.data('id');
-      } else {
-        return $ele;
-      }
+      return TreeView.find.generic(id,
+        function() { return $('.focused').next('div') }
+      );
     },
     prevSibling: function(id) {
-      $ele = $('.focused').prev('div');
-      if (id) {
-        return $ele.data('id');
-      } else {
-        return $ele;
-      }
+      return TreeView.find.generic(id,
+        function() { return $('.focused').prev('div') }
+      );
     },
     firstSibling: function(id) {
-      $ele = $('.focused').parent().children().first();
-      if (id) {
-        return $ele.data('id');
-      } else {
-        return $ele;
-      }
+      return TreeView.find.generic(id,
+        function() { return $('.focused').parent().children().first() }
+      );
     },
     lastSibling: function(id) {
-      $ele = $('.focused').parent().children().last();
-      if (id) {
-        return $ele.data('id');
-      } else {
-        return $ele;
-      }
+      return TreeView.find.generic(id,
+        function() { return $('.focused').parent().children().last() }
+      );
     },
     parent: function(id) {
-      $ele = $('.focused').parent().parent('div');
-      if (id) {
-        return $ele.data('id');
-      } else {
-        return $ele;
-      }
+      return TreeView.find.generic(id,
+        function() { return $('.focused').parent().parent('div') }
+      );
     },
     firstChild: function(id) {
-      $ele = $('.focused').children('ul').children().first();
-      if (id) {
-        return $ele.data('id');
-      } else {
-        return $ele;
-      }
+      return TreeView.find.generic(id,
+        function() { return $('.focused').children('ul').children().first() }
+      );
     },
     nearest: function() {
       $next = TreeView.find.nextSibling();
