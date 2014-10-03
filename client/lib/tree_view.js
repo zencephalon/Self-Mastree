@@ -128,7 +128,9 @@ TreeView = {
       $last = TreeView.find.lastSibling();
 
       if (prev === undefined && ($last.data('id') === undefined || $last.hasClass("focused"))) {
-        TreeView.focus.byId(TreeView.find.parent(true));
+        if (parent = TreeView.find.parent(true)) {
+          TreeView.focus.byId(parent);
+        }
       } else if (prev !== undefined) {
         TreeView.focus.byId(prev);
       } else {
