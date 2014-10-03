@@ -148,7 +148,7 @@ Tree.prototype.update = function(update) {
 
 Tree.prototype.removeChild = function(child) {
   children = _.without(this.children, child);
-  this.update({"$set": {children: children}});
+  this.updateChildren(children);
 }
 
 Tree.prototype.remove = function() {
