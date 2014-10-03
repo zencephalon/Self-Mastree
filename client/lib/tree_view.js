@@ -93,34 +93,34 @@ TreeView = {
   },
   focus: {
     byId: function(id) {
-      Tree.findOne(id).focus();
-      setTimeout(function() {$('#rename-form').find('input').change();}, 50);
+      if (id) {
+        Tree.findOne(id).focus();
+        setTimeout(function() {$('#rename-form').find('input').change();}, 50);
+      }
+    },
+    sibling: function(sibling, $end, alt) {
+      if (sibling === undefined &&
+          (!$end.data('id') || $end.hasClass("focused"))) {
+        TreeView.focus.byId(alt);
+      } else if (sibling) {
+        TreeView.focus.byId(sibling);
+      } else {
+        TreeView.focus.byId($end.data('id'));
+      }
     },
     nextSibling: function() {
-      $next = TreeView.find.nextSibling(true);
-      $first = TreeView.find.firstSibling();
-
-      if ($next === undefined && ($first.data('id') === undefined || $first.hasClass("focused"))) {
-        TreeView.focus.byId(TreeView.find.firstChild(true));
-      } else if ($next !== undefined) {
-        TreeView.focus.byId($next);
-      } else {
-        TreeView.focus.byId($first.data('id'));
-      }
+      TreeView.focus.sibling(
+        TreeView.find.nextSibling(true),
+        TreeView.find.firstSibling(),
+        TreeView.find.firstChild(true)
+      );
     },
     prevSibling: function() {
-      prev = TreeView.find.prevSibling(true);
-      $last = TreeView.find.lastSibling();
-
-      if (prev === undefined && ($last.data('id') === undefined || $last.hasClass("focused"))) {
-        if (parent = TreeView.find.parent(true)) {
-          TreeView.focus.byId(parent);
-        }
-      } else if (prev) {
-        TreeView.focus.byId(prev);
-      } else {
-        TreeView.focus.byId($last.data('id'));
-      }
+      TreeView.focus.sibling(
+        TreeView.find.prevSibling(true),
+        TreeView.find.lastSibling(),
+        TreeView.find.parent(true)
+      );
     },
     parent: function() {
       $parent = TreeView.find.parent(true);
