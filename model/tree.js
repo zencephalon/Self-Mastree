@@ -237,5 +237,5 @@ Tree.prototype.updateParent = function(parent_id) {
 }
 
 Tree.prototype.updateChildren = function(children) {
-  this.update({"$set":{children: children}});
+  this.update({"$set":{children: _.uniq(children)}});
 }
