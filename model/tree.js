@@ -77,7 +77,9 @@ Tree.hourKey = function(date) {
 }
 
 Tree.prototype.archive = function() {
-  this.update({"$set": {archived: true}});
+  if (!this.root) {
+    this.update({"$set": {archived: true}});
+  }
 }
 
 Tree.prototype.focus = function() {
