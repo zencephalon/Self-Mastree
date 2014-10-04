@@ -17,5 +17,9 @@ if (Meteor.isServer) {
     if (Trees.find().count() == 0) {
       seedData();
     }
-  });
+
+    Meteor.publish("user_trees", function() {
+      return Trees.find({uid: this.userId});
+    });
+  })
 }
