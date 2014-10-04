@@ -11,8 +11,12 @@
       {{> loginButtons}}
       {{> quickswitcher}}
     </header>
+    {{#if currentUser}}
     {{> root}}
     {{> focus}}
+    {{else}}
+    Login or create an account to use Self-Mastree.
+    {{/if}}
   </div>
 </body>
 </template>
