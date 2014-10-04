@@ -198,6 +198,10 @@ Tree.prototype.toggleFold = function () {
   this.update({"$set": {folded: !this.folded}});
 }
 
+Tree.prototype.folded_has_kids = function() {
+  return this.folded && (this.children.length > 0);
+}
+
 Tree.extractRef = function(text) {
   index = text.search(/\@/);
   if (index == -1) {
