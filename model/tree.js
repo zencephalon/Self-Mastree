@@ -236,12 +236,12 @@ Tree.prototype.updateParent = function(parent_id) {
     old_parent_children = old_parent.children;
     index = old_parent_children.indexOf(this._id);
     old_parent_children.splice(index, 1);
-    old_parent.update({"$set": {children: old_parent_children}});
+    old_parent.updateChildren(old_parent_children);
   }
 
   new_parent = Tree.findOne(parent_id);
   new_parent.children.push(this._id);
-  new_parent.update({"$set": {children: new_parent.children}});
+  new_parent.updateChildren(new_parent.children);
 
   this.update({"$set": {parent: parent_id}});
 }
