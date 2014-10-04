@@ -12,6 +12,14 @@ function seedData() {
 }
 
 if (Meteor.isServer) {
+  Accounts.onCreateUser(function(options, user) {
+    tree = Tree.create({text: "User", root: true, uid: user._id, focused: true});
+    tree.createChild({text: "Nature"});
+    tree.createChild({text: "Skills"});
+    tree.createChild({text: "Quests"});
+    return user;
+  });
+
   Meteor.startup(function () {
     //dropData();
     if (Trees.find().count() == 0) {

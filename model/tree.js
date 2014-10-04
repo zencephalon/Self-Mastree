@@ -16,9 +16,10 @@ Tree.create = function(o) {
   if (o['links'] === undefined) {
     o['links'] = [];
   }
-
+  if (o['focused'] === undefined) {
+    o['focused'] = false;
+  }
   o['archived'] = false;
-  o['focused'] = false;
   o['count'] = 0;
   o['total_count'] = 0;
 
