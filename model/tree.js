@@ -1,5 +1,21 @@
 Trees = new Meteor.Collection("trees");
 
+Trees.allow({
+  insert: function (userId, doc) {
+    // the user must be logged in, and the document must be owned by the user
+    return (userId && doc.uid === userId);
+  },
+  update: function (userId, doc, fields, modifier) {
+    // can only change your own documents
+    return doc.uid === userId;
+  },
+  remove: function (userId, doc) {
+    // can only remove your own documents
+    return doc.uid === userId;
+  },
+  fetch: ['uid']
+});
+
 Tree = function(o) {
   for (p in o) {
     this[p] = o[p];
