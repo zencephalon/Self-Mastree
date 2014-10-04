@@ -1,5 +1,43 @@
 <template name="help">
   {{#if help}}
-  HELLO
+    <a id="hide-help">Hide Help</a>
+    <table>
+      <tr>
+        <td>Up</td>
+        <td>Focus previous sibling</td>
+      </tr>
+      <tr>
+        <td>Down</td>
+        <td>Focus next sibling</td>
+      </tr>
+      <tr>
+        <td>Left</td>
+        <td>Focus parent</td>
+      </tr>
+      <tr>
+        <td>Right</td>
+        <td>Focus children</td>
+      </tr>
+      <tr>
+        <td>Space</td>
+        <td>Increment focused</td>
+      </tr>
+      <tr>
+        <td>Shift+Space</td>
+        <td>Decrement focused</td>
+      </tr>
+      <tr>
+        <td>Enter</td>
+        <td>Toggle focused folding</td>
+      </tr>
+      <tr>
+        <td>Ctrl+N</td>
+        <td>Create new child</td>
+      </tr>
+      <tr>
+        <td>Ctrl+S</td>
+        <td>Edit focused tree</td>
+      </tr>
+    </table>
   {{/if}}
 </template>
