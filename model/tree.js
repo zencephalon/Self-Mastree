@@ -182,7 +182,7 @@ Tree.extractLinks = function(text) {
   links = text.match(/\@\(.+?\)/g) || [];
   links = _.map(links, function(link_ref) { return link_ref.slice(2, -1) });
   return _.flatten(_.map(links, function(link_ref) {
-    return _.pluck(Trees.find({ref: link_ref}).fetch(), '._id');
+    return _.pluck(Trees.find({ref: link_ref}).fetch(), '_id');
   }));
 }
 
