@@ -136,6 +136,10 @@ Tree.prototype.incCount = function(own, amount) {
   }
 }
 
+Tree.prototype.fold = function(val) {
+  this.update({"$set":{folded: val}});
+}
+
 Tree.prototype.kids = function() {
   return _.reject(_.map(this.children,
                         function(o) {return Tree.findOne(o)}
@@ -177,9 +181,15 @@ Tree.prototype.remove = function() {
 }
 
 Tree.prototype.unfoldUp = function () {
-  this.update({"$set": {folded: false}});
+  this.fold(false);
+  that = this;
   if (this.parent) {
     parent = Tree.findOne(this.parent);
+    parent.kids().forEach(function(kid) {
+      if (kid._id != that._id) {
+        kid.fold(true);
+      }
+    })
     parent.unfoldUp();
   }
 }
