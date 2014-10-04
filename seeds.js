@@ -17,6 +17,8 @@ if (Meteor.isServer) {
     tree.createChild({text: "Nature"});
     tree.createChild({text: "Skills"});
     tree.createChild({text: "Quests"});
+    user['profile'] = {};
+    user['profile']['show_help'] = true;
     return user;
   });
 
