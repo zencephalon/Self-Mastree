@@ -9,4 +9,5 @@ accounts-ui
 accounts-password
 zencephalon:autocomplete
 iron:router
+accounts-facebook
 
