@@ -14,7 +14,7 @@ Template.quickswitcher.settings = function() {
       callback: function(doc, element) {
         var tree = Tree.findOne(doc._id);
         TreeView.focus.byId(tree._id);
-        tree.unfoldUp();
+        tree.unfoldUp(true);
         $('#quickswitcher').hide();
       }
     }]

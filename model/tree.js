@@ -183,17 +183,19 @@ Tree.prototype.remove = function() {
   parent.removeChild(this._id);
 }
 
-Tree.prototype.unfoldUp = function () {
+Tree.prototype.unfoldUp = function (first) {
   this.fold(false);
   that = this;
-  if (this.parent) {
-    parent = Tree.findOne(this.parent);
-    parent.kids().forEach(function(kid) {
-      if (kid._id != that._id) {
-        kid.fold(true);
-      }
-    })
-    parent.unfoldUp();
+  if (!first) {
+    if (this.parent) {
+      parent = Tree.findOne(this.parent);
+      parent.kids().forEach(function(kid) {
+        if (kid._id != that._id) {
+          kid.fold(true);
+        }
+      })
+      parent.unfoldUp();
+    }
   }
 }
 
