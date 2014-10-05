@@ -141,9 +141,13 @@ Tree.prototype.fold = function(val) {
 }
 
 Tree.prototype.kids = function() {
-  return _.reject(_.map(this.children,
-                        function(o) {return Tree.findOne(o)}
-                       ), function(tree) { return tree.archived });
+  return _.chain(
+    this.children
+  ).map(
+    function(o) {return Tree.findOne(o)}
+  ).reject(
+    function(tree) { return tree.archived }
+  ).value();
 }
 
 Tree.prototype.createChild = function(o) {
