@@ -257,7 +257,7 @@ Tree.prototype.updateChildren = function(children) {
   this.update({"$set":{children: _.uniq(children)}});
 }
 
-Tree.prototype.day_count = function(date) {
+Tree.prototype.dayCount = function(date) {
   year = date.getFullYear();
   month = date.getMonth();
   month_day = date.getDate();
@@ -267,6 +267,16 @@ Tree.prototype.day_count = function(date) {
   } catch(e) {
     return 0
   }
+}
+
+Tree.prototype.todayCount = function () {
+  return this.dayCount(new Date());
+}
+
+Tree.prototype.yesterdayCount = function () {
+  date = new Date();
+  date.setDate(date.getDate() - 1);
+  return this.dayCount(date);
 }
 
 Tree.prototype.average = function() {
