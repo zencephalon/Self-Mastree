@@ -287,10 +287,11 @@ Tree.prototype.average = function() {
     var start = this.createdAt;
     var now = new Date();
 
-    var diffDays = Math.round((now.getTime() - start.getTime()) / oneDay);
+    var diffDays = Math.floor((now.getTime() - start.getTime()) / oneDay);
+    var today_count = this.todayCount();
     if (diffDays == 0) {
-      return this.dayCount(new Date());
+      return today_count;
     }
-    return Math.round(this.total_count / diffDays);
+    return Math.round((this.total_count - today_count) / diffDays);
   }
 }
