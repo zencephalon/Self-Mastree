@@ -14,6 +14,16 @@ Template.tree.today_count = function(tree) {
   }
 }
 
+Template.tree.avg_display = function(tree) {
+  today_count = tree.day_count(new Date());
+  avg = tree.average()
+  if (today_count > avg) {
+    return "<span class='green'>" + avg + '</span>';
+  } else {
+    return avg;
+  }
+}
+
 Template.tree.total_yesterday_today = function(tree) {
   yesterday_count = Template.tree.yesterday_count(tree);
   today_count = tree.day_count(new Date());

@@ -269,7 +269,6 @@ Tree.prototype.day_count = function(date) {
   }
 }
 
-
 Tree.prototype.average = function() {
   var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
   if (this.createdAt) {
