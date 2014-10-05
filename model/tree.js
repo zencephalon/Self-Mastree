@@ -114,7 +114,7 @@ Tree.prototype.incCount = function(own, amount) {
   }
 
   update = {};
-  if (own === true) {
+  if (own) {
     update["count"] = amount
   }
 
