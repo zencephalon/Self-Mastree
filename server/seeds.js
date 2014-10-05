@@ -23,8 +23,6 @@ if (Meteor.isServer) {
   });
 
   Meteor.startup(function () {
-    //Trees.update({"createdAt": {"$exists":false}}, {"$set":{createdAt: new Date()}}, {multi:true});
-    Trees.update({uid: "i3RsjMfwdDEAhLR9K"}, {"$set":{createdAt: new Date(2014, 9, 1)}}, {multi:true});
     //dropData();
     if (Trees.find().count() == 0) {
       seedData();
