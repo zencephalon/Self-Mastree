@@ -268,3 +268,18 @@ Tree.prototype.day_count = function(date) {
     return 0
   }
 }
+
+
+Tree.prototype.average = function() {
+  var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+  if (this.createdAt) {
+    var start = this.createdAt;
+    var now = new Date();
+
+    var diffDays = Math.round((now.getTime() - start.getTime()) / oneDay);
+    if (diffDays == 0) {
+      return this.day_count(new Date());
+    }
+    return Math.round(this.total_count / diffDays);
+  }
+}
