@@ -186,16 +186,16 @@ Tree.prototype.remove = function() {
 Tree.prototype.unfoldUp = function (first) {
   this.fold(false);
   that = this;
-  if (!first) {
-    if (this.parent) {
-      parent = Tree.findOne(this.parent);
+  if (this.parent) {
+    parent = Tree.findOne(this.parent);
+    if (!first) {
       parent.kids().forEach(function(kid) {
         if (kid._id != that._id) {
           kid.fold(true);
         }
-      })
-      parent.unfoldUp();
+      });
     }
+    parent.unfoldUp();
   }
 }
 
