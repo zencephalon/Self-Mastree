@@ -255,3 +255,15 @@ Tree.prototype.updateParent = function(parent_id) {
 Tree.prototype.updateChildren = function(children) {
   this.update({"$set":{children: _.uniq(children)}});
 }
+
+Tree.prototype.day_count = function(date) {
+  year = date.getFullYear();
+  month = date.getMonth();
+  month_day = date.getDate();
+  week_day = date.getDay();
+  try {
+    return this['date'][year][month][month_day][week_day]['count'];
+  } catch(e) {
+    return 0
+  }
+}

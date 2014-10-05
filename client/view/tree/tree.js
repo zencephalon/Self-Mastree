@@ -6,7 +6,7 @@ Template.tree.events({
 });
 
 Template.tree.today_count = function(tree) {
-  count = Template.tree.day_count(tree, new Date());
+  count = tree.day_count(new Date());
   if (count != 0) {
     return "<span class='green'>+" + count + "</span>";
   } else {
@@ -16,7 +16,7 @@ Template.tree.today_count = function(tree) {
 
 Template.tree.total_yesterday_today = function(tree) {
   yesterday_count = Template.tree.yesterday_count(tree);
-  today_count = Template.tree.day_count(tree, new Date());
+  today_count = tree.day_count(new Date());
 
   if (today_count > yesterday_count) {
     start_str = "<span class='green'>(</span>";
@@ -31,20 +31,8 @@ Template.tree.total_yesterday_today = function(tree) {
 Template.tree.yesterday_count = function(tree) {
   date = new Date();
   date.setDate(date.getDate() - 1);
-  count = Template.tree.day_count(tree, date);
+  count = tree.day_count(date);
   return count;
-}
-
-Template.tree.day_count = function(tree, date) {
-  year = date.getFullYear();
-  month = date.getMonth();
-  month_day = date.getDate();
-  week_day = date.getDay();
-  try {
-    return tree['date'][year][month][month_day][week_day]['count'];
-  } catch(e) {
-    return 0
-  }
 }
 
 Template.tree.folded_class = function (tree) {
