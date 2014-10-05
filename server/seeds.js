@@ -31,5 +31,8 @@ if (Meteor.isServer) {
     Meteor.publish("user_trees", function() {
       return Trees.find({uid: this.userId});
     });
+    Meteor.publish("tree", function(_id) {
+      return Trees.find({_id: _id});
+    });
   })
 }
