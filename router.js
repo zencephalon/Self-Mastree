@@ -8,7 +8,6 @@ Router.route('/', {
 });
 
 Router.route('/t/:_id/inc', function () {
-  console.log(this.params._id);
   var req = this.request;
   var res = this.response;
   tree = Tree.findOne(this.params._id);
