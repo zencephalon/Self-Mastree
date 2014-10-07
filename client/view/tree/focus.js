@@ -49,10 +49,6 @@ Template.focus.rendered = function() {
   setTimeout(function() {$('#rename-form').find('input').change()}, 500);
 }
 
-Template.focus.api_inc_url = function() {
-  return 'http://self.zencephalon.com/t/' + Tree.focused()._id + '/inc';
-}
-
 Template.focus.events({
   'submit': function(event) {
     event.preventDefault();
