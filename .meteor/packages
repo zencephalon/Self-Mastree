@@ -7,6 +7,6 @@ standard-app-packages
 accounts-ui
 accounts-password
 zencephalon:autocomplete
-accounts-facebook
 iron:router@1.0.0-pre2
+accounts-facebook
 
