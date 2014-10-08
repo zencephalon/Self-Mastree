@@ -42,8 +42,7 @@ TreeView = {
     }
   },
   find: {
-    generic: function(id, f) {
-      $ele = f();
+    generic: function(id, $ele) {
       if (id) {
         return $ele.data('id');
       } else {
@@ -51,34 +50,22 @@ TreeView = {
       }
     },
     nextSibling: function(id) {
-      return TreeView.find.generic(id,
-        function() { return $('.focused').next('div') }
-      );
+      return TreeView.find.generic(id, $('.focused').next('div'));
     },
     prevSibling: function(id) {
-      return TreeView.find.generic(id,
-        function() { return $('.focused').prev('div') }
-      );
+      return TreeView.find.generic(id, $('.focused').prev('div'));
     },
     firstSibling: function(id) {
-      return TreeView.find.generic(id,
-        function() { return $('.focused').parent().children().first() }
-      );
+      return TreeView.find.generic(id, $('.focused').parent().children().first());
     },
     lastSibling: function(id) {
-      return TreeView.find.generic(id,
-        function() { return $('.focused').parent().children().last() }
-      );
+      return TreeView.find.generic(id, $('.focused').parent().children().last());
     },
     parent: function(id) {
-      return TreeView.find.generic(id,
-        function() { return $('.focused').parent().parent('div') }
-      );
+      return TreeView.find.generic(id, $('.focused').parent().parent('div'));
     },
     firstChild: function(id) {
-      return TreeView.find.generic(id,
-        function() { return $('.focused').children('ul').children().first() }
-      );
+      return TreeView.find.generic(id, $('.focused').children('ul').children().first());
     },
     nearest: function() {
       $next = TreeView.find.nextSibling();
