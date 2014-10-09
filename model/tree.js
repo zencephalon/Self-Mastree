@@ -320,12 +320,14 @@ Tree.prototype.recordStats = function() {
             }
           }
         }
-        current_day = this.date[year][month][month_day].count;
-        if (current_day !== undefined) {
-          day_total += current_day;
-          day_count += 1;
-          if (current_day > day_record) {
-            day_record = current_day;
+        if (month_day != "count") {
+          current_day = this.date[year][month][month_day].count;
+          if (current_day !== undefined) {
+            day_total += current_day;
+            day_count += 1;
+            if (current_day > day_record) {
+              day_record = current_day;
+            }
           }
         }
       }
