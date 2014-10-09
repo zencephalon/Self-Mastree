@@ -306,27 +306,32 @@ Tree.prototype.recordStats = function() {
   for (year in this.date) {
     for (month in this.date[year]) {
       for (month_day in this.date[year][month]) {
-        for (week_day in this.date[year][month][month_day]) {
-          for (hour in this.date[year][month][month_day][week_day]) {
-            if (hour != "count") {
-              current_hour = this.date[year][month][month_day][week_day][hour];
-              if (current_hour !== undefined) {
-                hour_total += current_hour;
-                hour_count += 1;
-                if (current_hour > hour_record) {
-                  hour_record = current_hour;
-                }
-              }
-            }
-          }
-        }
         if (month_day != "count") {
           current_day = this.date[year][month][month_day].count;
+
           if (current_day !== undefined) {
             day_total += current_day;
             day_count += 1;
+
             if (current_day > day_record) {
               day_record = current_day;
+            }
+
+            for (week_day in this.date[year][month][month_day]) {
+              for (hour in this.date[year][month][month_day][week_day]) {
+                if (hour != "count") {
+                  current_hour = this.date[year][month][month_day][week_day][hour];
+
+                  if (current_hour !== undefined) {
+                    hour_total += current_hour;
+                    hour_count += 1;
+
+                    if (current_hour > hour_record) {
+                      hour_record = current_hour;
+                    }
+                  }
+                }
+              }
             }
           }
         }
