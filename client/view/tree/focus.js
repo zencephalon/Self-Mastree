@@ -50,7 +50,9 @@ Template.focus.recordStats = function() {
   return "<tr><td>Day Rec</td><td>" + stats.day.record + "</td></tr>" +
          "<tr><td>Day Avg</td><td>" + stats.day.avg + "</td></tr>" +
          "<tr><td>Hour Rec</td><td>" + stats.hour.record + "</td></tr>" +
-         "<tr><td>Hour Avg</td><td>" + stats.hour.avg + "</td></tr>";
+         "<tr><td>Hour Avg</td><td>" + stats.hour.avg + "</td></tr>" +
+         "<tr><td>Total</td><td>" + tree.total_count + "</td></tr>" +
+         "<tr><td>Yesterday</td><td>" + tree.yesterdayCount() + "</td></tr>";
 }
 
 Template.focus.rendered = function() {
