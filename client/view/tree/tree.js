@@ -19,7 +19,7 @@ Template.tree.total_yesterday_today = function(tree) {
   yesterday_count = tree.yesterdayCount();
   today_count = tree.todayCount();
 
-  if (today_count > yesterday_count) {
+  if (today_count >= yesterday_count && today_count > 0) {
     start_str = "<span class='green'>(</span>";
     end_str = ")</span>";
   } else {
