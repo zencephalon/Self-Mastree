@@ -5,8 +5,10 @@ TreeView = {
     TreeView.focus.byId(nearest);
   },
   insertCreateForm: function() {
+    $('.focused > ul').removeClass("folded");
     Blaze.render(Template.create_form, $('.focused > ul')[0]);
     $('input[name="tree_text"]').focus();
+    Tree.focused().fold(false);
   },
   updateChildrenFromDOM: function() {
     parent = TreeView.find.parent();
