@@ -44,6 +44,11 @@ Template.focus.parent_value = function() {
   return "@(" + Tree.findOne(tree.parent).ref + ")";
 }
 
+Template.focus.root = function() {
+  tree = Tree.focused();
+  return tree.root;
+}
+
 Template.focus.recordStats = function() {
   tree = Tree.focused();
   stats =  tree.recordStats();
