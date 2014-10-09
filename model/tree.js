@@ -297,20 +297,37 @@ Tree.prototype.average = function() {
 }
 
 Tree.prototype.recordStats = function() {
-  console.log(this.date);
-  record = 0;
+  day_record = 0;
+  day_total = 0;
+  day_count = 0;
+  hour_record = 0;
+  hour_total = 0;
+  hour_count = 0;
   for (year in this.date) {
-    console.log(year);
     for (month in this.date[year]) {
       for (month_day in this.date[year][month]) {
-        day_count = this.date[year][month][month_day].count;
-        if (day_count > record) {
-          record = day_count;
+        for (week_day in this.date[year][month][month_day]) {
+          for (hour in this.date[year][month][month_day][week_day]) {
+            current_hour = this.date[year][month][month_day][week_day][hour].count;
+            if (current_hour !== undefined) {
+              hour_total += current_hour;
+              hour_count += 1;
+              if (current_hour > hour_record) {
+                hour_record = current_hour;
+              }
+            }
+          }
         }
-        console.log();
+        current_day = this.date[year][month][month_day].count;
+        if (current_day !== undefined) {
+          day_total += current_day;
+          day_count += 1;
+          if (current_day > day_record) {
+            day_record = current_day;
+          }
+        }
       }
-      //console.log(month);
     }
   }
-  return record;
+  return {day: {record: day_record, avg: day_total / day_count}, hour: {record: hour_record, avg: hour_total / hour_count}};
 }
