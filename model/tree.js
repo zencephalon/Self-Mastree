@@ -292,7 +292,7 @@ Tree.prototype.average = function() {
     if (diffDays == 0) {
       return today_count;
     }
-    return Math.round((this.total_count - today_count) / diffDays);
+    return Tree.cleanAvg(this.total_count - today_count, diffDays);
   }
 }
 
@@ -331,5 +331,9 @@ Tree.prototype.recordStats = function() {
       }
     }
   }
-  return {day: {record: day_record, avg: day_total / day_count}, hour: {record: hour_record, avg: hour_total / hour_count}};
+  return {day: {record: day_record, avg: Tree.cleanAvg(day_total, day_count)}, hour: {record: hour_record, avg: Tree.cleanAvg(hour_total, hour_count)}};
+}
+
+Tree.cleanAvg = function(total, num) {
+  return Math.round((total / num) * 10) / 10;
 }
