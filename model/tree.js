@@ -308,12 +308,14 @@ Tree.prototype.recordStats = function() {
       for (month_day in this.date[year][month]) {
         for (week_day in this.date[year][month][month_day]) {
           for (hour in this.date[year][month][month_day][week_day]) {
-            current_hour = this.date[year][month][month_day][week_day][hour].count;
-            if (current_hour !== undefined) {
-              hour_total += current_hour;
-              hour_count += 1;
-              if (current_hour > hour_record) {
-                hour_record = current_hour;
+            if (hour != "count") {
+              current_hour = this.date[year][month][month_day][week_day][hour];
+              if (current_hour !== undefined) {
+                hour_total += current_hour;
+                hour_count += 1;
+                if (current_hour > hour_record) {
+                  hour_record = current_hour;
+                }
               }
             }
           }
