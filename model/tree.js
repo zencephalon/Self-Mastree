@@ -295,3 +295,22 @@ Tree.prototype.average = function() {
     return Math.round((this.total_count - today_count) / diffDays);
   }
 }
+
+Tree.prototype.recordStats = function() {
+  console.log(this.date);
+  record = 0;
+  for (year in this.date) {
+    console.log(year);
+    for (month in this.date[year]) {
+      for (month_day in this.date[year][month]) {
+        day_count = this.date[year][month][month_day].count;
+        if (day_count > record) {
+          record = day_count;
+        }
+        console.log();
+      }
+      //console.log(month);
+    }
+  }
+  return record;
+}

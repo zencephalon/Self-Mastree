@@ -44,6 +44,11 @@ Template.focus.parent_value = function() {
   return "@(" + Tree.findOne(tree.parent).ref + ")";
 }
 
+Template.focus.recordStats = function() {
+  tree = Tree.focused();
+  return tree.recordStats();
+}
+
 Template.focus.rendered = function() {
   $('#rename-form').find('input').autosizeInput();
   setTimeout(function() {$('#rename-form').find('input').change()}, 500);
