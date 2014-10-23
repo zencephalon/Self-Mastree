@@ -17,6 +17,9 @@ Template.focus.helpers({
     tree = Tree.focused();
     return tree.root;
   },
+  val: function() {
+    return Tree.focused().val;
+  },
   recordStats: function() {
     tree = Tree.focused();
     stats =  tree.recordStats();
