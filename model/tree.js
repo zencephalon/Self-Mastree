@@ -38,6 +38,7 @@ Tree.create = function(o) {
   o['archived'] = false;
   o['count'] = 0;
   o['total_count'] = 0;
+  o['val'] = 1;
   o['createdAt'] = new Date();
 
   if (o['text']) {
