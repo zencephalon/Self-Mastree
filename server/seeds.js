@@ -23,6 +23,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.startup(function () {
+    Trees.update({val: {"$exists":false}}, {"$set": {val: 1}}, {multi: true});
     //dropData();
     if (Trees.find().count() == 0) {
       seedData();
