@@ -28,18 +28,26 @@ Template.tree.helpers({
     }
     return start_str + yesterday_count + "<span class='green'>+" + today_count + end_str;
   },
-  folded_class: function (tree) {
+  folded_class: function(tree) {
     if (tree.folded) {
       return "folded";
     } else {
       return false;
     }
   },
-  focused_class: function (tree) {
+  focused_class: function(tree) {
     c = "tree";
     if (tree.focused) {
       c += " focused";
     }
     return c;
+  },
+  val: function(tree) {
+    val = tree.val;
+    if (val > 1) {
+      return "<span class='green'>" + val + "</span>";
+    } else {
+      return "<span class='grey'>" + val + "</span>";
+    }
   }
 });
