@@ -11,6 +11,6 @@ Router.route('/t/:_id/inc', function () {
   var req = this.request;
   var res = this.response;
   tree = Tree.findOne(this.params._id);
-  tree.incCount(true, 1);
+  tree.incCount(true);
   res.end('success ' + (tree.total_count+1));
 }, {where: 'server'});

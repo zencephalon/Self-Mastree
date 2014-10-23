@@ -23,7 +23,7 @@ Mousetrap.bind('space', function() {
 });
 Mousetrap.bind('shift+space', function() {
   tree = Tree.focused();
-  tree.incCount(true, -1);
+  tree.incCount(true, true);
   return false;
 });
 Mousetrap.bind('ctrl+n', function() {

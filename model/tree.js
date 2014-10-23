@@ -109,9 +109,9 @@ Tree.prototype.getParent = function() {
   return Tree.findOne(this.parent);
 }
 
-Tree.prototype.incCount = function(own, amount) {
+Tree.prototype.incCount = function(own, subtract, amount) {
   if (amount === undefined) {
-    amount = 1;
+    amount = subtract ? -this.val : this.val;
   }
 
   update = {};
@@ -128,10 +128,10 @@ Tree.prototype.incCount = function(own, amount) {
   this.update({"$inc": update});
 
   if (this.parent !== undefined)  {
-    this.getParent().incCount(false, amount);
+    this.getParent().incCount(false, subtract, amount);
   }
   if (this.links) {
-    this.links.forEach(function (link) { Tree.findOne(link).incCount(false, amount) });
+    this.links.forEach(function (link) { Tree.findOne(link).incCount(false, subtract, amount) });
   }
 }
 
@@ -225,7 +225,7 @@ Tree.extractLinks = function(text) {
 }
 
 Tree.prototype.updateVal = function (val, update) {
-  this.val = val;
+  this.val = parseInt(val);
   if (update) {
     this.update();
   }
