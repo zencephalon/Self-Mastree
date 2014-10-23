@@ -1,12 +1,13 @@
-Template.help.help = function() {
-  if (Meteor.user()) {
-    return Meteor.user().profile.show_help;
+Template.help.helpers({
+  help: function() {
+    if (Meteor.user()) {
+      return Meteor.user().profile.show_help;
+    }
+  },
+  api_inc_url: function() {
+    return 'http://self.zencephalon.com/t/' + Tree.focused()._id + '/inc';
   }
-}
-
-Template.help.api_inc_url = function() {
-  return 'http://self.zencephalon.com/t/' + Tree.focused()._id + '/inc';
-}
+});
 
 Template.help.events({
   'click a#hide-help': function() {
