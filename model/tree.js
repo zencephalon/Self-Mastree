@@ -224,6 +224,13 @@ Tree.extractLinks = function(text) {
   }));
 }
 
+Tree.prototype.updateVal = function (val, update) {
+  this.val = val;
+  if (update) {
+    this.update();
+  }
+}
+
 Tree.prototype.updateText = function(text, update) {
   this.text = text.trim();
   this.ref = Tree.extractRef(this.text);

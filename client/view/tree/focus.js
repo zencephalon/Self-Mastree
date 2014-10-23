@@ -42,6 +42,7 @@ Template.focus.events({
     event.preventDefault();
     tree = Tree.focused();
     tree.updateText($(event.target).find('input[name=text]').val(), true);
+    tree.updateVal($(event.target).find('input[name=val]').val(), true);
     $(event.target).find('input').blur();
     return false;
   }
