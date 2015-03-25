@@ -23,6 +23,12 @@ Template.quickswitcher.helpers({
   }
 });
 
+Template.quickswitcher.events({
+  'submit #qswitcher': function(event) {
+    event.preventDefault();
+  }
+})
+
 Template.quickswitcher.rendered = function() {
   Mousetrap.bind('ctrl+space', function(e) {
     e.preventDefault();
