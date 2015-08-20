@@ -26,7 +26,7 @@ Mousetrap.bind('shift+space', function() {
   tree.incCount(true, true);
   return false;
 });
-Mousetrap.bind('ctrl+n', function() {
+Mousetrap.bind('alt+n', function() {
   $form = $('#create_form');
   if ($form.length == 0) {
     TreeView.insertCreateForm();
@@ -34,10 +34,10 @@ Mousetrap.bind('ctrl+n', function() {
     $('#create_form input').blur();
   }
 });
-Mousetrap.bind('ctrl+x', function() {
+Mousetrap.bind('alt+x', function() {
   TreeView.removeFocused();
 });
-Mousetrap.bind('ctrl+s', function() {
+Mousetrap.bind('alt+s', function() {
   $('#focus-edit-text').focus();
 });
 Mousetrap.bind('enter', function() {
